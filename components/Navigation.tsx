@@ -3,9 +3,9 @@ import { ThemeToggle } from '@/components/ThemeToggle'
 
 const MAIN_NAV_LINKS = [
   { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
+  { label: 'Resume', href: '/resume' },
+  { label: 'Portfolio', href: '/portfolio' },
   { label: 'Contact', href: '/contact' },
-  { label: 'Users', href: '/users' }
 ]
 
 export default function Navigation() {
