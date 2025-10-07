@@ -9,7 +9,7 @@ export const connectToDB = async () => {
   try {
     const db = Database
     await db.connect({
-      uri: config.databaseURI,
+      uri: config.databaseURI as string,
       options: {
         dbName: config.databaseName,
         autoCreate: config.databaseConnectionOptions.autoCreate,
