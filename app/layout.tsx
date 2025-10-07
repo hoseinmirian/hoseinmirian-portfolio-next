@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Josefin_Sans, Lora } from 'next/font/google'
 import './globals.css'
 import Providers from '@/providers'
@@ -60,6 +61,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
           <BreadCrumbs className='divide-accent bg-background font-lora mx-auto mb-4 max-w-7xl border-b' />
           {children}
         </Providers>
+        <SpeedInsights />
       </body>
     </html>
   )
