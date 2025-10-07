@@ -1,5 +1,3 @@
-[![codecov](https://codecov.io/gh/hoseinmirian/hoseinmirian-portfolio-next/branch/main/graph/badge.svg)](https://codecov.io/gh/hoseinmirian/hoseinmirian-portfolio-next)
-
 <<<<<<< HEAD
 # next-js-hossein-boilerplate
 next js hossein template
