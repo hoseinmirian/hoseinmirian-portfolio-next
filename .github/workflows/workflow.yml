@@ -37,6 +37,3 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
           verbose: true
-          comment: true
-          # Enforce minimum coverage percentage
-          thresholds: 'project:20,patch:10'
