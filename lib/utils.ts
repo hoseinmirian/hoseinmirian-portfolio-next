@@ -2,16 +2,12 @@ import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
 // combine class names
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
-}
+export const cn = (...inputs: ClassValue[])=> twMerge(clsx(inputs))
 
 // base url helper
 // lib/getBaseUrl.ts (or inside lib/utils.ts)
 
-function stripTrailingSlash(url: string) {
-  return url.endsWith('/') ? url.slice(0, -1) : url
-}
+const stripTrailingSlash = (url: string)=> url.endsWith('/') ? url.slice(0, -1) : url
 
 /**
  * Returns the canonical base URL.

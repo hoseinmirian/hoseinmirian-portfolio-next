@@ -17,7 +17,14 @@ export default defineConfig({
         'features/**/*.{ts,tsx}',
         'lib/**/*.{ts,tsx}'
       ],
-      exclude: ['app/robots.ts', 'app/sitemap.ts', 'app/manifest.ts']
+      exclude: [
+        'app/robots.ts',
+        'app/sitemap.ts',
+        'app/manifest.ts',
+        'node_modules/',
+        '**/index.ts',
+        '**/*.d.ts',
+      ]
     },
     reporters: ['default', 'html']
   }
