@@ -1,7 +1,6 @@
-<<<<<<< HEAD
+[![codecov](https://codecov.io/gh/hoseinmirian/hoseinmirian-portfolio-next/branch/main/graph/badge.svg)](https://codecov.io/gh/hoseinmirian/hoseinmirian-portfolio-next)
+
 # next-js-hossein-boilerplate
-next js hossein template
-=======
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
