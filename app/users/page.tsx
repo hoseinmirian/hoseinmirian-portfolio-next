@@ -3,7 +3,7 @@ import { Flex } from '@/components/Layout'
 import UserListWrapper from '@/features/users/components/UserListWrapper'
 import { Suspense } from 'react'
 
-export const revalidate = 60 // revalidate every 1 minutes (only works in production, in development it's always revalidated on each request)
+export const revalidate = 60 // revalidate every 1 minutes (only works in production)
 
 export default function Users() {
   return (
