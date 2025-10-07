@@ -20,16 +20,6 @@ import {
   logActionError,
   notFoundError
 } from '@/db'
-// import { cache } from 'react'
-
-// ---------------------------------------- reusable helpers
-// cached version of userDALs functions
-
-/*
-// Example of caching a function in case for a first render pass when multiple server and client components call a data reading function
-export const getUserCached = cache((id: string) => userDAL.findById(id))
-export const getUsersCached = cache(() => userDAL.findAll())
-*/
 
 // Validate user ID function
 const validateUserId = (id: string) => {
@@ -71,6 +61,8 @@ export async function createUser(
   // Use DAL for database operations
   try {
     const user = await userDAL.create(body)
+    if (!user) return notFoundError('User')
+
     const safeData = toSafeUserDTO(user)
 
     // Optionally revalidate a path
@@ -113,14 +105,13 @@ export async function updateUser(
   try {
     // Check if user exists first
     const existingUser = await userDAL.findById(id)
-    if (!existingUser) {
-      return notFoundError('User')
-    }
+    if (!existingUser) return notFoundError('User')
 
     // Use validated data
     const body = result.data
 
     const user = (await userDAL.update(id, body)) as UserType
+    if (!user) return notFoundError('User')
 
     // now it's time to return only the data needed using DTO
     const safeData = toSafeUserDTO(user)
@@ -157,7 +148,8 @@ export async function deleteUser(
       return notFoundError('User')
     }
 
-    await userDAL.delete(id)
+    const deletedUser = await userDAL.delete(id)
+    if (!deletedUser) return notFoundError('User')
 
     // Optionally revalidate a path
     if (options.revalidatePath) revalidatePath(options.revalidatePath)
@@ -180,7 +172,6 @@ export async function getUsers() {
   try {
     // Use DAL for database operations
     const users = await userDAL.findAll()
-    // no users found
     if (!users) return notFoundError('Users')
 
     const result = UserListSchema.safeParse(users) // Validate response with zod
@@ -213,8 +204,6 @@ export async function getUserById(id: string) {
   // Use DAL for database operations
   try {
     const user = await userDAL.findById(id)
-
-    // no user found
     if (!user) return notFoundError('User')
 
     const safeData = toSafeUserDTO(user)
