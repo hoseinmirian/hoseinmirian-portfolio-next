@@ -20,3 +20,4 @@ comment:
   require_changes: true
   require_base: false
   require_head: true
+  hide_project_coverage: false # [true :: only show coverage on the git diff aka patch coverage]
