@@ -2,33 +2,30 @@ import type { MetadataRoute } from 'next'
 import { getBaseUrl } from '@/lib/utils'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = getBaseUrl()
-  const now = new Date()
-
   return [
     {
-      url: `${base}/`,
-      lastModified: now,
+      url: `${getBaseUrl()}/`,
+      lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 1
     },
     {
-      url: `${base}/contact`,
-      lastModified: now,
+      url: `${getBaseUrl()}/resume`,
+      lastModified: new Date(),
       changeFrequency: 'yearly',
-      priority: 0.1
+      priority: 0.6
     },
     {
-      url: `${base}/portfolio`,
-      lastModified: now,
+      url: `${getBaseUrl()}/portfolio`,
+      lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8
     },
     {
-      url: `${base}/resume`,
-      lastModified: now,
+      url: `${getBaseUrl()}/contact`,
+      lastModified: new Date(),
       changeFrequency: 'yearly',
-      priority: 0.6
-    }
+      priority: 0.1
+    },
   ]
 }
