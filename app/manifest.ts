@@ -2,9 +2,9 @@ import type { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Next boilerplate hossein',
-    short_name: 'Next boilerplate hossein',
-    description: 'Next boilerplate hossein ready to use',
+    name: 'Hossein Mirian portfolio',
+    short_name: 'hossein mirian',
+    description: 'Hossein Mirian personal portfolio website',
     start_url: '/',
     display: 'standalone',
     background_color: '#fff',
