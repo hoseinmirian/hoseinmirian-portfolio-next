@@ -37,6 +37,8 @@ export const userDAL = {
 
     const user = await UserModel.findById(id)
 
+    if (!user) return null
+
     return JSON.parse(
       JSON.stringify({
         ...user._doc,
@@ -51,6 +53,8 @@ export const userDAL = {
     // await checkPermissions('get', 'user')
 
     const users = await UserModel.find()
+
+    if (!users) return []
 
     const response = users.map(user => ({
       ...user._doc,
@@ -76,6 +80,8 @@ export const userDAL = {
       runValidators: true
     }).exec()
 
+    if (!updatedUser) return null
+
     return JSON.parse(
       JSON.stringify({
         ...updatedUser._doc,
@@ -93,6 +99,8 @@ export const userDAL = {
     // await checkPermissions('delete', 'user')
 
     const deletedUser = await UserModel.findByIdAndDelete(id)
+
+    if (!deletedUser) return null
 
     return { id: deletedUser._id.toString() }
   }
