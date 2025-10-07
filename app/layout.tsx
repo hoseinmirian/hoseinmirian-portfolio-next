@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
 import { Josefin_Sans, Lora } from 'next/font/google'
 import './globals.css'
 import Providers from '@/providers'
@@ -62,6 +63,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
           {children}
         </Providers>
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   )
