@@ -6,12 +6,12 @@ coverage:
   status:
     project:
       default:
-        target: 1%
+        target: 20%
         threshold: 0.5%
         informational: true
     patch:
       default:
-        target: 1%
+        target: 10%
         informational: true
 
 comment:
