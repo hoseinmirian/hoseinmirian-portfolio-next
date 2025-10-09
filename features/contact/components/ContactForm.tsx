@@ -1,3 +1,5 @@
+'use client';
+
 import React from "react";
 import { useContactForm } from '@/features/contact';
 import { createContact } from "@/features/contact/actions";
