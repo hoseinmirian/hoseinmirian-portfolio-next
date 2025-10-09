@@ -1,5 +1,5 @@
 import { getUsers } from '@/features/users'
-import UserList from './UserList'
+import UserList from '@/features/users/components/UserList'
 import Errors from '@/components/Errors'
 
 export default async function UserListWrapper() {

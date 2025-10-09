@@ -6,7 +6,7 @@ import {
   updateUser,
   deleteUser,
   getUserById
-} from '@/features/users'
+} from '@/features/users/actions'
 import { CreateUserSchema, UpdateUserSchema } from '@/dal/dto/user-dto'
 import { useFormStatus } from 'react-dom'
 
