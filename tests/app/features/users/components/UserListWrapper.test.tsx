@@ -4,7 +4,7 @@ import UserListWrapper from '@/features/users/components/UserListWrapper'
 import { createUserDTO } from '@/dal/dto/user-dto'
 
 // Mock the module where getUsers is defined
-vi.mock('@/features/users', () => ({
+vi.mock('@/features/users/actions', () => ({
   getUsers: vi.fn()
 }))
 
