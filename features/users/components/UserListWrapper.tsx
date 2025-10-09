@@ -1,4 +1,4 @@
-import { getUsers } from '@/features/users'
+import { getUsers } from '@/features/users/actions'
 import UserList from '@/features/users/components/UserList'
 import Errors from '@/components/Errors'
 
