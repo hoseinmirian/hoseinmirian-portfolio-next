@@ -45,3 +45,5 @@ next-env.d.ts
 .idea
 
 components/npmcache
+*storybook.log
+storybook-static
