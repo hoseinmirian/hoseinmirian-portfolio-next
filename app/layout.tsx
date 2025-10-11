@@ -7,6 +7,8 @@ import Providers from '@/providers'
 import Header from '@/components/Header'
 import BreadCrumbs from '@/components/BreadCrumbs'
 import Navigation from '@/components/Navigation'
+import { AppDataProvider } from '@/providers/AppDataProvider'
+import { getUsers } from '@/features/users'
 
 const josefin = Josefin_Sans({
   variable: '--font-josefin',
@@ -51,17 +53,25 @@ export const metadata: Metadata = {
   ]
 }
 
-export default function RootLayout({ children }: LayoutProps<'/'>) {
+async function getAppData(){
+  const { data } = await getUsers()
+  return { allProfile: data }
+}
+
+export default async function RootLayout({ children }: LayoutProps<'/'>) {
+  const { allProfile } = await getAppData()
   return (
     <html lang='en' suppressHydrationWarning>
       <body
         className={`${josefin.variable} ${lora.variable} font-josefin relative min-h-dvh antialiased`}
       >
-        <Providers>
-          <Header>{<Navigation />}</Header>
-          <BreadCrumbs className='divide-accent bg-background font-lora mx-auto mb-4 max-w-7xl border-b' />
-          {children}
-        </Providers>
+          <AppDataProvider value={ allProfile ? { allProfile } : { allProfile: [] }}>
+            <Providers>
+              <Header>{<Navigation />}</Header>
+              <BreadCrumbs className='divide-accent bg-background font-lora mx-auto mb-4 max-w-7xl border-b' />
+              {children}
+            </Providers>
+          </AppDataProvider>
         <SpeedInsights />
         <Analytics />
       </body>

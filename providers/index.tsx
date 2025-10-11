@@ -2,7 +2,7 @@
 
 import type { ReactNode } from 'react'
 import { ThemeProvider } from 'next-themes'
-import ToasterProvider from './toaster-provider'
+import ToasterProvider from './ToasterProvider'
 
 export default function Providers({ children }: { children: ReactNode }) {
   return (

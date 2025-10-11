@@ -1,4 +1,24 @@
-export function ResumeListWrapper() {}
+'use client';
+import { useAppData } from '@/providers/AppDataProvider'
+
+export function ResumeListWrapper() {
+  type Profile = { name: string };
+  const { allProfile = [] } = useAppData();
+
+  const profiles = allProfile as Profile[];
+
+  if (!profiles.length) return null;
+
+  return (
+    <div>
+      {profiles.map(p => (
+        <div key={p.name}>
+          <span>{p.name}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
 // should accept a prop to render all or some of the resume items (can be used in home page as well)
 
 /* ==============>>>>>> without Zod
