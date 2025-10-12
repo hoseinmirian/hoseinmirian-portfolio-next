@@ -6,14 +6,14 @@ export type AppData = {
   allProfile: Array<unknown>
 }
 
-// 1️⃣ Create a server context with a default value
+// 1️⃣ Create a context (filled data in layout in server side but used within client components) with a default value
 export const AppDataContext = createContext<AppData>({
   allProfile: []
 })
 
 type AppDataProviderProps = {
   children: ReactNode
-  value?: AppData
+  value: AppData
 }
 
 const initialValue: AppData = {

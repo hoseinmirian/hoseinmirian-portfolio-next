@@ -3,7 +3,6 @@ import { render } from '@testing-library/react'
 import { ThemeProvider } from 'next-themes'
 import type { RenderOptions } from '@testing-library/react'
 import ToasterProvider from '@/providers/ToasterProvider'
-import { AppDataProvider } from '@/providers/AppDataProvider'
 import {
   AppRouterContext,
   type AppRouterInstance
@@ -64,7 +63,6 @@ const AllTheProviders = ({
 }) => {
   return (
     <AppRouterContext.Provider value={createMockRouter(router)}>
-    <AppDataProvider value={{allProfile: []}}>
       <ThemeProvider
         enableSystem
         attribute='class'
@@ -74,7 +72,6 @@ const AllTheProviders = ({
         {children}
         <ToasterProvider />
       </ThemeProvider>
-    </AppDataProvider>
     </AppRouterContext.Provider>
   )
 }
