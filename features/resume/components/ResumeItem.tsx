@@ -9,7 +9,7 @@ export default function ResumeItem({ resume }: { resume: ResumeItemProps }) {
 
   return (
     <li className='rounded p-4'>
-      <h3 className='font-semibold'>{name}</h3>
+      <p className='font-semibold'>{name}</p>
     </li>
   )
 }
