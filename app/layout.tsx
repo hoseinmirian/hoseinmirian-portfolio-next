@@ -25,10 +25,10 @@ const lora = Lora({
 
 export const metadata: Metadata = {
   title: {
-    template: '%s / Next Boilerplate',
-    default: 'Welcome / Next Boilerplate'
+    template: '%s / Hossein Mirian',
+    default: 'Welcome / Hossein Mirian'
   },
-  description: 'a next boilerplate by hossein Mirian',
+  description: 'Hossein Mirian portfolio website',
   icons: [
     {
       rel: 'apple-touch-icon',
