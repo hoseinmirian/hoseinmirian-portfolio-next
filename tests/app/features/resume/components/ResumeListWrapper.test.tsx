@@ -1,4 +1,4 @@
-import { renderWithoutProviders, screen } from '@/tests/test-utility'
+import { renderWithoutProviders, render, screen } from '@/tests/test-utility'
 import { ResumeListWrapper } from '@/features/resume/components/ResumeListWrapper'
 import { AppDataProvider } from '@/providers/AppDataProvider'
 
