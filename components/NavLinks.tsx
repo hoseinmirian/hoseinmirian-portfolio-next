@@ -27,9 +27,8 @@ export default function NavLinks({ className, navLinks }: NavLinkProps) {
       {navLinks.map(({ href, label }) => {
         const isActive = pathname === href
         return (
-          <Link
+          <li
             key={href}
-            href={href}
             className={cn(
               'transition-color rounded-md px-3 py-1 duration-800',
               isActive
@@ -37,8 +36,8 @@ export default function NavLinks({ className, navLinks }: NavLinkProps) {
                 : 'text-muted-foreground hover:text-primary'
             )}
           >
-            {label}
-          </Link>
+            <Link href={href}>{label}</Link>
+          </li>
         )
       })}
     </ul>
