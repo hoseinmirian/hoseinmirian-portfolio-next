@@ -20,10 +20,7 @@ export const AppDataIdSchema = z.string()
 export const createAppDataDTO = (overrides?: Partial<AppDataType>) => {
   const base: Partial<AppDataType> = {
     id: '1',
-    name: 'Default User',
-    email: 'default@example.com'
   }
-
-  // Validate with Zod so factory never produces invalid DTOs
+  
   return { ...base, ...overrides }
 }
