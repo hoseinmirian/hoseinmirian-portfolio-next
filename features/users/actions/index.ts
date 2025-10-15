@@ -21,6 +21,15 @@ import {
   notFoundError
 } from '@/db'
 
+const ENTITY = 'User'
+const ENTITY_PLURAL = 'Users'
+const VERB = {
+  CREATE: 'create',
+  UPDATE: 'update',
+  DELETE: 'delete',
+  GET: 'get'
+}
+
 // Validate user ID function
 const validateUserId = (id: string) => {
   const validatedID = UserIdSchema.safeParse(id)
@@ -61,7 +70,7 @@ export async function createUser(
   // Use DAL for database operations
   try {
     const user = await userDAL.create(body)
-    if (!user) return notFoundError('User')
+    if (!user) return notFoundError(ENTITY)
 
     const safeData = toSafeUserDTO(user)
 
@@ -74,10 +83,10 @@ export async function createUser(
       errors: null
     }
   } catch (error) {
-    logActionError('create', 'user', error)
+    logActionError(VERB.CREATE, ENTITY, error)
     if (error instanceof Error && error.name?.includes('Error'))
-      return handleMongoError(error, 'create', 'user')
-    return buildActionFailure('create', 'user')
+      return handleMongoError(error, VERB.CREATE, ENTITY)
+    return buildActionFailure(VERB.CREATE, ENTITY)
   }
 }
 
@@ -105,13 +114,13 @@ export async function updateUser(
   try {
     // Check if user exists first
     const existingUser = await userDAL.findById(id)
-    if (!existingUser) return notFoundError('User')
+    if (!existingUser) return notFoundError(ENTITY)
 
     // Use validated data
     const body = result.data
 
     const user = (await userDAL.update(id, body)) as UserType
-    if (!user) return notFoundError('User')
+    if (!user) return notFoundError(ENTITY)
 
     // now it's time to return only the data needed using DTO
     const safeData = toSafeUserDTO(user)
@@ -125,10 +134,10 @@ export async function updateUser(
       errors: null
     }
   } catch (error) {
-    logActionError('update', 'user', error)
+    logActionError(VERB.UPDATE, ENTITY, error)
     if (error instanceof Error && error.name?.includes('Error'))
-      return handleMongoError(error, 'update', 'user')
-    return buildActionFailure('update', 'user')
+      return handleMongoError(error, VERB.UPDATE, ENTITY)
+    return buildActionFailure(VERB.UPDATE, ENTITY)
   }
 }
 
@@ -145,11 +154,11 @@ export async function deleteUser(
     // Check if user exists first
     const user = await userDAL.findById(id)
     if (!user) {
-      return notFoundError('User')
+      return notFoundError(ENTITY)
     }
 
     const deletedUser = await userDAL.delete(id)
-    if (!deletedUser) return notFoundError('User')
+    if (!deletedUser) return notFoundError(ENTITY)
 
     // Optionally revalidate a path
     if (options.revalidatePath) revalidatePath(options.revalidatePath)
@@ -160,10 +169,10 @@ export async function deleteUser(
       errors: null
     }
   } catch (error) {
-    logActionError('delete', 'user', error)
+    logActionError(VERB.DELETE, ENTITY, error)
     if (error instanceof Error && error.name?.includes('Error'))
-      return handleMongoError(error, 'delete', 'user')
-    return buildActionFailure('delete', 'user')
+      return handleMongoError(error, VERB.DELETE, ENTITY)
+    return buildActionFailure(VERB.DELETE, ENTITY)
   }
 }
 
@@ -172,12 +181,12 @@ export async function getUsers() {
   try {
     // Use DAL for database operations
     const users = await userDAL.findAll()
-    if (!users) return notFoundError('Users')
+    if (!users) return notFoundError(ENTITY_PLURAL)
 
     const result = UserListSchema.safeParse(users) // Validate response with zod
     if (!result.success) {
-      logActionError('get', 'users', zod.prettifyError(result.error))
-      return buildActionFailure('get', 'users')
+      logActionError(VERB.GET, ENTITY_PLURAL, zod.prettifyError(result.error))
+      return buildActionFailure(VERB.GET, ENTITY_PLURAL)
     }
 
     // now it's time to return only the data needed using DTO
@@ -189,10 +198,10 @@ export async function getUsers() {
       errors: null
     }
   } catch (error) {
-    logActionError('get', 'users', error)
+    logActionError(VERB.GET, ENTITY_PLURAL, error)
     if (error instanceof Error && error.name?.includes('Error'))
-      return handleMongoError(error, 'get', 'users')
-    return buildActionFailure('get', 'users')
+      return handleMongoError(error, VERB.GET, ENTITY_PLURAL)
+    return buildActionFailure(VERB.GET, ENTITY_PLURAL)
   }
 }
 
@@ -204,7 +213,7 @@ export async function getUserById(id: string) {
   // Use DAL for database operations
   try {
     const user = await userDAL.findById(id)
-    if (!user) return notFoundError('User')
+    if (!user) return notFoundError(ENTITY)
 
     const safeData = toSafeUserDTO(user)
 
@@ -214,9 +223,9 @@ export async function getUserById(id: string) {
       errors: null
     }
   } catch (error) {
-    logActionError('get', 'user', error)
+    logActionError(VERB.GET, ENTITY, error)
     if (error instanceof Error && error.name?.includes('Error'))
-      return handleMongoError(error, 'get', 'user')
-    return buildActionFailure('get', 'user')
+      return handleMongoError(error, VERB.GET, ENTITY)
+    return buildActionFailure(VERB.GET, ENTITY)
   }
 }
