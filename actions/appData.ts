@@ -7,16 +7,20 @@ import {
 } from '@/db'
 import * as zod from 'zod'
 
+const ENTITY = 'AppData'
+const VERB = {
+  GET: 'get'
+}
+
 export async function getAllAppData() {
   try {
-    // Use DAL for database operations
     const users = await appDataDAL.findAll()
-    if (!users) return notFoundError('appData')
+    if (!users) return notFoundError(ENTITY)
 
     const result = UserListSchema.safeParse(users) // Validate response with zod
     if (!result.success) {
-      logActionError('get', 'appData', zod.prettifyError(result.error))
-      return buildActionFailure('get', 'appData')
+      logActionError(VERB.GET, ENTITY, zod.prettifyError(result.error))
+      return buildActionFailure(VERB.GET, ENTITY)
     }
     
     return {
@@ -25,9 +29,9 @@ export async function getAllAppData() {
       errors: null
     }
   } catch (error) {
-    logActionError('get', 'appData', error)
+    logActionError(VERB.GET, ENTITY, error)
     if (error instanceof Error && error.name?.includes('Error'))
-      return handleMongoError(error, 'get', 'appData')
-    return buildActionFailure('get', 'appData')
+      return handleMongoError(error, VERB.GET, ENTITY)
+    return buildActionFailure(VERB.GET, ENTITY)
   }
 }
