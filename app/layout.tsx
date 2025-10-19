@@ -4,11 +4,12 @@ import { Analytics } from "@vercel/analytics/next"
 import { Josefin_Sans, Lora } from 'next/font/google'
 import './globals.css'
 import Providers from '@/providers'
-import Header from '@/components/Header'
-import BreadCrumbs from '@/components/BreadCrumbs'
-import Navigation from '@/components/Navigation'
+// import Header from '@/components/Header'
+// import BreadCrumbs from '@/components/BreadCrumbs'
+// import Navigation from '@/components/Navigation'
 import { AppDataProvider } from '@/providers/AppDataProvider'
 import { getUsers } from '@/features/users'
+import dynamic from 'next/dynamic'
 
 const josefin = Josefin_Sans({
   variable: '--font-josefin',
@@ -57,6 +58,12 @@ async function getAppData(){
   const { data } = await getUsers()
   return { allProfile: data }
 }
+
+
+const Header = dynamic(() => import('@/components/Header'))
+const Navigation = dynamic(() => import('@/components/Navigation'))
+const BreadCrumbs = dynamic(() => import('@/components/BreadCrumbs'))
+
 
 export default async function RootLayout({ children }: LayoutProps<'/'>) {
   const { allProfile } = await getAppData()
