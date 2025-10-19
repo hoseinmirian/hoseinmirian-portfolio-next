@@ -87,5 +87,11 @@
     "typescript": "5.9.3",
     "vite-tsconfig-paths": "5.1.4",
     "vitest": "3.2.4"
-  }
+  },
+  "browserslist": [
+    "defaults",
+    "supports es6-module",
+    "not IE 11",
+    "not op_mini all"
+  ]
 }
