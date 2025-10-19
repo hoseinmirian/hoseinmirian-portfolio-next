@@ -64,7 +64,8 @@ export const AppDataZodSchema = z.object({
     description: z.string().optional(),
   })).optional(),
   skills: z.array(z.object({
-    title: z.enum(SKILL_LEVELS),
+    title: z.string().optional(),
+    level: z.enum(SKILL_LEVELS).optional(),
   })).optional(),
   description: z.object({
     singletonKey: z.string().optional(),
@@ -166,11 +167,11 @@ const ServiceSchema = new Schema(
 // --- Skill ---
 const SkillSchema = new Schema(
   {
-    title: {
+    title: String,
+    level: {
       type: String,
       enum: SKILL_LEVELS,
-      required: true,
-    }
+    },
   }
 )
 
