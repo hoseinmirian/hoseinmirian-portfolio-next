@@ -2,13 +2,13 @@ import type { Metadata } from 'next'
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"
 import { Josefin_Sans, Lora } from 'next/font/google'
-import './globals.css'
 import Providers from '@/providers'
 import Header from '@/components/Header'
 import BreadCrumbs from '@/components/BreadCrumbs'
 import Navigation from '@/components/Navigation'
 import { AppDataProvider } from '@/providers/AppDataProvider'
 import { getUsers } from '@/features/users'
+import './globals.css'
 
 const josefin = Josefin_Sans({
   variable: '--font-josefin',
