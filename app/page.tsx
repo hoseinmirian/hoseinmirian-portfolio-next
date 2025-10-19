@@ -7,7 +7,7 @@ export default function Home() {
       {/* Section 1: max width, items start */}
       <Flex as='section' maxWidth='max-w-7xl' className='my-10 max-h-full'>
         <h1 className='text-3xl'>Home page</h1>
-        <Button variant='destructive'>some text</Button>
+        <Button variant='secondary'>some text</Button>
       </Flex>
 
       {/* Section 2: full width, items center */}
