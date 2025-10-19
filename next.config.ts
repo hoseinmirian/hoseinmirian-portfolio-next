@@ -8,8 +8,7 @@ const withBundleAnalyzer = bundleAnalyzer({
 const nextConfig: NextConfig = {
   outputFileTracingRoot: __dirname, // silence warning about double package.json (can be fixed in later Next.js versions)
   experimental: {
-    reactCompiler: true,
-    optimizeCss: true
+    reactCompiler: true
   }
 }
 
