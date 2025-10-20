@@ -56,7 +56,7 @@ export const metadata: Metadata = {
 export default async function RootLayout({ children }: LayoutProps<'/'>) {
   const { data, success } = await getAllAppData()
   if (!success) {
-    console.debug("Error loading app data.")
+    console.debug("Error loading app data")
   }
   
   const value = data ? { data } : { data: [] }
