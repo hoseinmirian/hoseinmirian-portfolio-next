@@ -1,14 +1,21 @@
 'use client'
 
 import ResumeItem from '@/features/resume/components/ResumeItem'
+import type { ResumeType } from '@/db'
 
-type ResumeListProps = { name: string }[]
+export interface ResumeListProps {
+  resumes: ResumeType[]
+}
 
-export default function ResumeList({ resumes }: { resumes: ResumeListProps }) {
+export default function ResumeList({ resumes }: ResumeListProps)  {
+  if (resumes.length === 0) {
+    return null
+  }
+  
   return (
     <ul>
-      {resumes.map(resume => (
-        <ResumeItem key={resume.name} resume={resume} />
+      {resumes.map(resumeItem => (
+        <ResumeItem key={resumeItem.organization} resume={resumeItem} />
       ))}
     </ul>
   )

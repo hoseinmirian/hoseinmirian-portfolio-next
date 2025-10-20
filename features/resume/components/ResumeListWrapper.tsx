@@ -2,17 +2,16 @@
 
 import { useAppData } from '@/providers/AppDataProvider'
 import ResumeList from '@/features/resume/components/ResumeList'
-
-type Resume = { name: string };
+import type { ResumeType } from '@/db'
 
 export function ResumeListWrapper() {
-  const { allProfile } = useAppData();
+  const { data } = useAppData();
+  
+  if (!data.length) return null;
+  
+  const { resume } = data[0];
 
-  const profiles = allProfile as Resume[];
-
-  if (!profiles.length) return null;
-
-  return <ResumeList resumes={profiles} />
+  return <ResumeList resumes={resume as ResumeType[]} />
 }
 // should accept a prop to render all or some of the resume items (can be used in home page as well)
 

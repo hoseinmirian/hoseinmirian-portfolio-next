@@ -7,7 +7,7 @@ import Header from '@/components/Header'
 import BreadCrumbs from '@/components/BreadCrumbs'
 import Navigation from '@/components/Navigation'
 import { AppDataProvider } from '@/providers/AppDataProvider'
-import { getUsers } from '@/features/users'
+import { getAllAppData } from '@/actions'
 import './globals.css'
 
 const josefin = Josefin_Sans({
@@ -53,25 +53,26 @@ export const metadata: Metadata = {
   ]
 }
 
-async function getAppData(){
-  const { data } = await getUsers()
-  return { allProfile: data }
-}
-
 export default async function RootLayout({ children }: LayoutProps<'/'>) {
-  const { allProfile } = await getAppData()
+  const { data, success } = await getAllAppData()
+  if (!success) {
+    console.debug("Error loading app data.")
+  }
+  
+  const value = data ? { data } : { data: [] }
+  
   return (
     <html lang='en' suppressHydrationWarning>
       <body
         className={`${josefin.variable} ${lora.variable} font-josefin relative min-h-dvh antialiased`}
       >
-          <AppDataProvider value={ allProfile ? { allProfile } : { allProfile: [] }}>
-            <Providers>
-              <Header>{<Navigation />}</Header>
-              <BreadCrumbs className='divide-accent bg-background font-lora mx-auto mb-4 max-w-7xl border-b' />
-              {children}
-            </Providers>
-          </AppDataProvider>
+        <AppDataProvider value={value}>
+          <Providers>
+            <Header>{<Navigation />}</Header>
+            <BreadCrumbs className='divide-accent bg-background font-lora mx-auto mb-4 max-w-7xl border-b' />
+            {children}
+          </Providers>
+        </AppDataProvider>
         <SpeedInsights />
         <Analytics />
       </body>

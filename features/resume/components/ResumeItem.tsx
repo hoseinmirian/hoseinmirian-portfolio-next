@@ -1,15 +1,17 @@
 'use client'
 
-type ResumeItemProps = {
-  name: string
+import type { ResumeType } from '@/db'
+
+export interface ResumeItemProps {
+  resume: ResumeType
 }
 
-export default function ResumeItem({ resume }: { resume: ResumeItemProps }) {
-  const { name } = resume
+export default function ResumeItem({ resume }: ResumeItemProps) {
+  const { organization } = resume
 
   return (
     <li className='rounded p-4'>
-      <p className='font-semibold'>{name}</p>
+      <p className='font-semibold'>{organization}</p>
     </li>
   )
 }

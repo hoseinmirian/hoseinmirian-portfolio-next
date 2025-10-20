@@ -1,4 +1,4 @@
-import { appDataDAL, UserListSchema } from '@/dal'
+import { appDataDAL, AppDataSchema } from '@/dal'
 import {
   buildActionFailure,
   handleMongoError,
@@ -14,10 +14,12 @@ const VERB = {
 
 export async function getAllAppData() {
   try {
-    const users = await appDataDAL.findAll()
-    if (!users) return notFoundError(ENTITY)
+    const appDatas = await appDataDAL.findAll()
+    if (!appDatas) return notFoundError(ENTITY)
+    
+    const appData = appDatas[0]
 
-    const result = UserListSchema.safeParse(users) // Validate response with zod
+    const result = AppDataSchema.safeParse(appData)
     if (!result.success) {
       logActionError(VERB.GET, ENTITY, zod.prettifyError(result.error))
       return buildActionFailure(VERB.GET, ENTITY)
@@ -25,7 +27,7 @@ export async function getAllAppData() {
     
     return {
       success: true,
-      data: result.data,
+      data: appDatas,
       errors: null
     }
   } catch (error) {

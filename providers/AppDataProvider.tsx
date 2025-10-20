@@ -1,14 +1,15 @@
 'use client'
 
 import { createContext, useContext, type ReactNode } from 'react'
+import type { AppDataType } from '@/dal'
 
 export type AppData = {
-  allProfile: Array<unknown>
+  data: Array<AppDataType>
 }
 
 // 1️⃣ Create a context (filled data in layout in server side but used within client components) with a default value
 export const AppDataContext = createContext<AppData>({
-  allProfile: []
+  data: []
 })
 
 type AppDataProviderProps = {
@@ -17,7 +18,7 @@ type AppDataProviderProps = {
 }
 
 const initialValue: AppData = {
-  allProfile: []
+  data: []
 }
 
 export const AppDataProvider = ({

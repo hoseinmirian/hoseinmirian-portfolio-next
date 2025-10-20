@@ -2,19 +2,20 @@ import 'server-only'
 
 import AppDataModel from '@/db/models/appDataModel'
 import { connectToDB } from '@/db'
+import type { AppDataType } from '@/dal'
 
 export const appDataDAL = {
-  async findAll() {
+  async findAll(): Promise<AppDataType[]> {
     await connectToDB()
 
-    const appData = await AppDataModel.find()
+    const appDatas = await AppDataModel.find()
 
-    if (!appData) return []
+    if (!appDatas) return []
 
-    const response = {
-      ...appData[0]._doc,
-      id: appData[0]._id.toString()
-    }
+    const response = appDatas.map(appData => ({
+      ...appData._doc,
+      id: appData._id.toString()
+    }))
 
     return JSON.parse(JSON.stringify(response))
   },
