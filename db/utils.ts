@@ -26,75 +26,77 @@ export const logActionError = (
 
 // Generic MongoDB/Mongoose error handler
 export const handleMongoError = (
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  error: any,
+  error: unknown,
   action: string,
   resource: string
 ) => {
   let message = `Failed to ${action} ${resource}`
 
+  // Type guard for error objects
+  const err = error as Record<string, unknown>
+
   // Handle specific MongoDB/Mongoose errors
-  if (error.code === 11000) {
+  if (err.code === 11000) {
     // Duplicate key error
-    const field = Object.keys(error.keyValue || {})[0] || 'field'
+    const field = Object.keys((err.keyValue as Record<string, unknown>) || {})[0] || 'field'
     message = `${resource} with this ${field} already exists`
-  } else if (error.name === 'ValidationError') {
+  } else if (err.name === 'ValidationError') {
     // Mongoose validation error - fix the type issue
-    const validationErrors = Object.values(error.errors).map(
-      (err: unknown) => (err as { message: string }).message
+    const validationErrors = Object.values((err.errors as Record<string, unknown>) || {}).map(
+      (e: unknown) => (e as { message: string }).message
     )
     message = validationErrors.join(', ')
-  } else if (error.name === 'CastError') {
+  } else if (err.name === 'CastError') {
     // Invalid ObjectId or type casting error
-    message = `Invalid ${error.path} format`
-  } else if (error.name === 'DocumentNotFoundError') {
+    message = `Invalid ${err.path as string} format`
+  } else if (err.name === 'DocumentNotFoundError') {
     // Document not found error
     message = `${resource} not found`
-  } else if (error.name === 'MissingSchemaError') {
+  } else if (err.name === 'MissingSchemaError') {
     // Schema not registered error
     message = 'Schema configuration error'
-  } else if (error.name === 'ObjectExpectedError') {
+  } else if (err.name === 'ObjectExpectedError') {
     // Expected object but got different type
     message = 'Invalid data format provided'
-  } else if (error.name === 'ObjectParameterError') {
+  } else if (err.name === 'ObjectParameterError') {
     // Invalid parameter passed to object
     message = 'Invalid parameter provided'
-  } else if (error.name === 'OverwriteModelError') {
+  } else if (err.name === 'OverwriteModelError') {
     // Model already exists error
     message = 'Model configuration conflict'
-  } else if (error.name === 'ParallelSaveError') {
+  } else if (err.name === 'ParallelSaveError') {
     // Parallel save conflict
     message = 'Concurrent modification detected'
-  } else if (error.name === 'StrictModeError') {
+  } else if (err.name === 'StrictModeError') {
     // Strict mode violation
     message = 'Schema validation failed'
-  } else if (error.name === 'VersionError') {
+  } else if (err.name === 'VersionError') {
     // Version conflict error
     message = 'Document version conflict'
-  } else if (error.code === 121) {
+  } else if (err.code === 121) {
     // Document validation failed
     message = 'Document validation failed'
-  } else if (error.name === 'MongoNetworkError') {
+  } else if (err.name === 'MongoNetworkError') {
     // Network connectivity issues
     message = 'Database connection error'
-  } else if (error.name === 'MongoTimeoutError') {
+  } else if (err.name === 'MongoTimeoutError') {
     // Operation timeout
     message = 'Database operation timeout'
-  } else if (error.name === 'MongoServerError') {
+  } else if (err.name === 'MongoServerError') {
     // General MongoDB server error
     message = 'Database server error'
-  } else if (error.message) {
+  } else if (err.message) {
     // Use the error message if available
-    message = error.message
+    message = err.message as string
   }
 
   // Only expose user-friendly messages, hide technical details
   const safeErrorMessages =
-    error.code === 11000
+    err.code === 11000
       ? message // Duplicate key errors are safe to show
-      : error.name === 'ValidationError'
+      : err.name === 'ValidationError'
         ? message // Validation errors are safe to show
-        : error.name === 'CastError'
+        : err.name === 'CastError'
           ? 'Invalid ID format' // Simplified cast error
           : 'Something went wrong. Please try again.' // Generic message for all other errors
 
@@ -105,5 +107,4 @@ export const handleMongoError = (
       message: safeErrorMessages
     }
   }
-  // eslint-enable-next-line @typescript-eslint/no-explicit-any
 }
