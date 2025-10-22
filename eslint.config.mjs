@@ -1,34 +1,29 @@
-// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
-import storybook from "eslint-plugin-storybook";
+// ESLint config for Next.js 16
+// Using default export from eslint-config-next instead of FlatCompat
+// Storybook plugin added back for v9 support
 
-import { dirname } from 'path'
-import { fileURLToPath } from 'url'
-import { FlatCompat } from '@eslint/eslintrc'
+import nextConfig from 'eslint-config-next'
+import storybook from 'eslint-plugin-storybook'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname
-})
-
-const eslintConfig = [{
-  ignores: [
-    'node_modules/**',
-    '.next/**',
-    'out/**',
-    'build/**',
-    'html/**',
-    'public/**',
-    'coverage/**',
-    'cypress/**',
-    'cypress.config.ts',
-    'next-env.d.ts',
-    'stories/**'
-  ]
-}, ...compat.extends(
-  'next/core-web-vitals',
-  'next/typescript',
-), ...storybook.configs["flat/recommended"]]
+const eslintConfig = [
+  {
+    ignores: [
+      'node_modules/**',
+      '.next/**',
+      'out/**',
+      'build/**',
+      'html/**',
+      'public/**',
+      'coverage/**',
+      'cypress/**',
+      'cypress.config.ts',
+      'next-env.d.ts',
+      'stories/**',
+      'storybook-static/**'
+    ]
+  },
+  ...nextConfig,
+  ...storybook.configs['flat/recommended']
+]
 
 export default eslintConfig
