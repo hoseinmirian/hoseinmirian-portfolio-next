@@ -25,8 +25,8 @@ const lora = Lora({
 
 export const metadata: Metadata = {
   title: {
-    template: '%s / Hossein Mirian',
-    default: 'Welcome / Hossein Mirian'
+    template: '%s | Hossein Mirian',
+    default: 'Welcome | Hossein Mirian'
   },
   description: 'Hossein Mirian portfolio website',
   icons: [
