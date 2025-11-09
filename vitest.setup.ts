@@ -107,7 +107,7 @@ afterEach(() => {
 
   // Mock cleanup - order matters!
   vi.clearAllMocks() // Clear call history and results
-  vi.resetAllMocks() // Reset implementation to original mock
+  // vi.resetAllMocks() // Reset implementation to original mock
   // DON'T use vi.restoreAllMocks() here - it would break our global mocks
   server.resetHandlers() // Reset any request handlers that are added during the tests
 })
