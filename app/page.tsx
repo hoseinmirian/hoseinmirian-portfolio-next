@@ -3,7 +3,7 @@ import { Flex } from '@/components/Layout'
 
 export default function Home() {
   return (
-    <main>
+    <main role="main">
       {/* Section 1: max width, items start */}
       <Flex as='section' maxWidth='max-w-7xl' className='my-10 max-h-full'>
         <h1 className='text-3xl'>Home page</h1>

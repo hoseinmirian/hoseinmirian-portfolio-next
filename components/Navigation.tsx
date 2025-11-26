@@ -11,7 +11,7 @@ const MAIN_NAV_LINKS = [
 
 export default function Navigation() {
   return (
-    <nav className='mx-auto flex max-w-7xl items-center justify-between'>
+    <nav role="navigation" className='mx-auto flex max-w-7xl items-center justify-between'>
       <Link
         className='text-2xl font-bold'
         href='/'

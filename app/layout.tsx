@@ -76,6 +76,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
         <SpeedInsights />
         <Analytics />
       </body>
+      <footer role="contentinfo">copy right</footer>
     </html>
   )
 }

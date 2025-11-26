@@ -8,6 +8,7 @@ type HeaderProps = ComponentProps<'header'> & {
 export default function Header({ className, children }: HeaderProps) {
   return (
     <header
+      role="banner"
       className={cn(
         'sticky top-0 z-50 w-full py-6 backdrop-blur-sm',
         className
