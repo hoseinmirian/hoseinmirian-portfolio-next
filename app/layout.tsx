@@ -70,13 +70,17 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
           <Providers>
             <Header>{<Navigation />}</Header>
             <BreadCrumbs className='divide-accent bg-background font-lora mx-auto mb-4 max-w-7xl border-b' />
-            {children}
+            <main>
+              {children}
+            </main>
+            <footer role="contentinfo" className="py-6 text-center text-sm text-muted-foreground">
+              © {new Date().getFullYear()} Hossein Mirian
+            </footer>
           </Providers>
         </AppDataProvider>
         <SpeedInsights />
         <Analytics />
       </body>
-      <footer role="contentinfo">copy right</footer>
     </html>
   )
 }
