@@ -8,11 +8,9 @@ export const metadata: Metadata = {
 
 export default function Resume() {
   return (
-    <section>
       <Flex as='section' maxWidth='max-w-7xl' className='my-10'>
         <h1 className='text-3xl'>Resume page</h1>
         <ResumeListWrapper />
       </Flex>
-    </section>
   )
 }
