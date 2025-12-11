@@ -99,8 +99,8 @@ const renderWithoutProviders = (ui: ReactElement, options?: RenderOptions) =>
 // Re-export everything
 export * from '@testing-library/react'
 // Override render method
-export { renderWithProviders as render }
-export { renderWithoutProviders }
+export { renderWithoutProviders as render }
+export { renderWithProviders }
 export {
   default as userEvent,
   type UserEvent,

@@ -1,4 +1,9 @@
-import { render, screen, userEvent, type UserEvent } from '@/tests/test-utility'
+import {
+  renderWithProviders,
+  screen,
+  userEvent,
+  type UserEvent
+} from '@/tests/test-utility'
 import { ThemeToggle } from '@/components/ThemeToggle'
 
 describe('ThemeToggle', () => {
@@ -9,7 +14,7 @@ describe('ThemeToggle', () => {
 
   describe('Renders', () => {
     it('renders the toggle button', () => {
-      render(<ThemeToggle />)
+      renderWithProviders(<ThemeToggle />)
 
       const button = screen.getByRole('button', { name: /toggle theme/i })
 
@@ -19,7 +24,7 @@ describe('ThemeToggle', () => {
 
   describe('Behavior', () => {
     it('sets light theme when clicking Light option', async () => {
-      render(<ThemeToggle />)
+      renderWithProviders(<ThemeToggle />)
 
       const button = screen.getByRole('button', { name: /toggle theme/i })
 
@@ -33,7 +38,7 @@ describe('ThemeToggle', () => {
     })
 
     it('sets dark theme when clicking Dark option', async () => {
-      render(<ThemeToggle />)
+      renderWithProviders(<ThemeToggle />)
 
       const button = screen.getByRole('button', { name: /toggle theme/i })
 
@@ -47,7 +52,7 @@ describe('ThemeToggle', () => {
     })
 
     it('sets system theme when clicking System option', async () => {
-      render(<ThemeToggle />)
+      renderWithProviders(<ThemeToggle />)
 
       const button = screen.getByRole('button', { name: /toggle theme/i })
 

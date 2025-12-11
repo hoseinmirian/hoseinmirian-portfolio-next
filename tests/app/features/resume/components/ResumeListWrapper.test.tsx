@@ -1,4 +1,4 @@
-import { renderWithoutProviders, screen } from '@/tests/test-utility'
+import { render, screen } from '@/tests/test-utility'
 import { ResumeListWrapper } from '@/features/resume/components/ResumeListWrapper'
 import { AppDataProvider } from '@/providers/AppDataProvider'
 
@@ -15,7 +15,7 @@ import { AppDataProvider } from '@/providers/AppDataProvider'
 describe('ResumeListWrapper', () => {
   describe('Renders', () => {
     it('renders nothing when no data', () => {
-      const { container } = renderWithoutProviders(
+      const { container } = render(
         <AppDataProvider
           value={{
             data: [
@@ -34,7 +34,7 @@ describe('ResumeListWrapper', () => {
     })
 
     it('renders resume items', () => {
-      renderWithoutProviders(
+      render(
         <AppDataProvider
           value={{
             data: [
@@ -48,8 +48,10 @@ describe('ResumeListWrapper', () => {
                     to: '2013-06-30',
                     role: 'Bachelor of Science in Computer Science',
                     website: 'https://www.ox.ac.uk',
-                    bullet_points: ['Graduated with honors, list for 6 semesters'],
-                  },
+                    bullet_points: [
+                      'Graduated with honors, list for 6 semesters'
+                    ]
+                  }
                 ]
               }
             ]

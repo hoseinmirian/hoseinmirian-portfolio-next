@@ -20,7 +20,40 @@ export const AppDataIdSchema = z.string()
 export const createAppDataDTO = (overrides?: Partial<AppDataType>) => {
   const base: Partial<AppDataType> = {
     id: '1',
+    about: {
+      name: 'Sample About Title',
+      email: '',
+      phone: '',
+      address: '',
+      cv_link: '',
+      age: '',
+      biography: '',
+      full_summary: '',
+      nationality: '',
+      degree: '',
+      remote_availability: '',
+      years_experience: ''
+    },
+    hero: {
+      title: 'Sample Hero Title',
+      subtitle: 'Sample Hero Subtitle'
+    },
+    portfolio: [],
+    resume: [],
+    education: [],
+    social: [],
+    services: [],
+    skills: [],
+    description: {
+      singletonKey: 'description_singleton',
+      skills: 'Sample skills description',
+      services: 'Sample services description'
+    }
   }
-  
-  return { ...base, ...overrides }
+
+  return {
+    id: base.id!,
+    ...(base as Omit<AppDataType, 'id'>),
+    ...(overrides ?? {})
+  }
 }
