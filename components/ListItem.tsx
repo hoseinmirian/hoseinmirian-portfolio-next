@@ -15,7 +15,10 @@ export function ListItem({
   ...rest
 }: Props) {
   
-  const baseClass = clsx('rounded-lg border p-4 shadow-sm transition hover:shadow-md', className); 
+  const baseClass = clsx(
+    'rounded-lg border border-gray-200 bg-white p-4 shadow-sm transition hover:shadow-md dark:border-gray-700 dark:bg-gray-800 dark:hover:shadow-lg',
+    className
+  ) 
 
   return (
     <Component className={baseClass} onClick={onClick} {...rest}>

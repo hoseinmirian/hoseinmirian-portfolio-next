@@ -33,9 +33,10 @@ export const AppDataZodSchema = z.object({
     location: z.string(),
     role: z.string(),
     description: z.string(),
-    website: z.url(),
-    source_code: z.url(),
+    website: z.string(),
+    source_code: z.string(),
     techs: z.array(z.string()),
+    order: z.number(),
   })).optional(),
   resume: z.array(z.object({
     organization: z.string(),
@@ -114,20 +115,19 @@ const AboutSchema = new Schema(
 )
 
 // --- Portfolio ---
-const PortfolioSchema = new Schema(
-  {
-    title: { type: String, required: true },
-    type: { type: String, required: true },
-    img: { type: String, required: true },
-    organization: { type: String, required: true },
-    location: { type: String, required: true },
-    role: { type: String, required: true },
-    description: { type: String, required: true },
-    website: { type: String, required: true },
-    source_code: { type: String, required: true },
-    techs: { type: [String], required: true },
-  },
-)
+const PortfolioSchema = new Schema({
+  title: { type: String, required: true },
+  type: { type: String, required: true },
+  img: { type: String, required: true },
+  organization: { type: String, required: true },
+  location: { type: String, required: true },
+  role: { type: String, required: true },
+  description: { type: String, required: true },
+  website: { type: String, required: true },
+  source_code: { type: String, required: true },
+  techs: { type: [String], required: true },
+  order: { type: Number, required: true, index: true }
+})
 
 // --- Resume / Experience ---
 const ResumeSchema = new Schema(

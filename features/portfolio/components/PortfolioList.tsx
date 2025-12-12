@@ -1,6 +1,7 @@
 import { ListRenderer } from '@/components/ListRenderer'
 import { ListItem } from '@/components/ListItem'
 import type { PortfolioType } from '@/db/models'
+import Image from 'next/image'
 
 interface Props {
   visibleCount?: number
@@ -16,18 +17,56 @@ export function PortfolioList({
   return (
     <ListRenderer items={visiblePortfolioItems} layout='grid' columns={2}>
       {(portfolioItem, idx) => (
-        <ListItem key={portfolioItem.title + '_' + idx}>
+        <ListItem key={portfolioItem.title + '_' + idx} className='space-y-1'>
           <h3 className='text-lg font-semibold'>{portfolioItem.title}</h3>
-          <p className='text-sm text-gray-600'>{portfolioItem.type}</p>
-          <p className='text-sm text-gray-600'>{portfolioItem.img}</p>
-          <p className='text-sm text-gray-600'>{portfolioItem.organization}</p>
-          <p className='text-sm text-gray-600'>{portfolioItem.location}</p>
-          <p className='text-sm text-gray-600'>{portfolioItem.role}</p>
-          <p className='text-sm text-gray-600'>{portfolioItem.description}</p>
-          <p className='text-sm text-gray-600'>{portfolioItem.website}</p>
-          <p className='text-sm text-gray-600'>{portfolioItem.source_code}</p>
-          {portfolioItem.techs.map((tech) => (
-            <span key={tech} className='text-sm text-gray-600 mr-1'>
+          <Image
+            className='mb-4'
+            src={`/assets/images/${portfolioItem.img}`}
+            height={400}
+            width={600}
+            alt={portfolioItem.title}
+          />
+          <p className='text-orange-500'>{portfolioItem.organization}</p>
+          <p className='text-gray-600 dark:text-gray-200'>
+            <b>type:</b> {portfolioItem.type}
+          </p>
+          <p className='text-gray-600 dark:text-gray-200'>
+            <b>location:</b> {portfolioItem.location}
+          </p>
+          <p className='text-gray-600 dark:text-gray-200'>
+            <b>role:</b> {portfolioItem.role}
+          </p>
+          <p className='text-gray-600 dark:text-gray-200'>
+            <b>description:</b> {portfolioItem.description}
+          </p>
+          <p className='text-gray-600 dark:text-gray-200'>
+            <b>website:</b>{' '}
+            <a
+              href={portfolioItem.website}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='text-blue-400 underline'
+            >
+              {portfolioItem.website}
+            </a>
+          </p>
+          <p className='text-gray-600 dark:text-gray-200'>
+            <b>github: </b>
+            <a
+              href={portfolioItem.source_code}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='text-blue-400 underline'
+            >
+              {portfolioItem.source_code}
+            </a>
+          </p>
+          {portfolioItem.techs.map((tech, idx) => (
+            <span
+              key={tech + '_' + idx}
+              className='mr-1 text-gray-600 dark:text-gray-200'
+            >
+              {idx !== 0 && ' | '}
               {tech}
             </span>
           ))}

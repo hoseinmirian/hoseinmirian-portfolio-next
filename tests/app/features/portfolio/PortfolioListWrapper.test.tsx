@@ -26,14 +26,15 @@ describe('ResumeListWrapper', () => {
           {
             title: 'some title',
             type: 'Web Development',
-            img: 'some-image.jpg',
+            img: 'image.jpg',
             organization: 'Org',
             location: 'Location',
             role: 'Developer',
             description: 'Description',
             website: 'https://example.com',
             source_code: 'https://github.com/example',
-            techs: ['React', 'TypeScript']
+            techs: ['React', 'TypeScript'],
+            order: 1
           }
         ]
       })
@@ -52,12 +53,19 @@ describe('ResumeListWrapper', () => {
       expect(screen.getByText(/Org/)).toBeInTheDocument()
       expect(screen.getByText(/Developer/)).toBeInTheDocument()
       expect(screen.getByText(/Web Development/)).toBeInTheDocument()
-      expect(screen.getByText(/some-image.jpg/)).toBeInTheDocument()
       expect(screen.getByText(/Description/)).toBeInTheDocument()
-      expect(screen.getByText(/https:\/\/example.com/)).toBeInTheDocument()
-      expect(screen.getByText(/https:\/\/github.com\/example/)).toBeInTheDocument()
-      expect(screen.getByText(/React/)).toBeInTheDocument()
       expect(screen.getByText(/TypeScript/)).toBeInTheDocument()
+      expect(screen.getByText(/React/)).toBeInTheDocument()
+      expect(screen.getByRole('img', { name: /some title/i })).toHaveAttribute(
+        'src',
+        expect.stringContaining('image.jpg')
+      )
+      expect(
+        screen.getByRole('link', { name: /https:\/\/example\.com/ })
+      ).toHaveAttribute('href', 'https://example.com')
+      expect(
+        screen.getByRole('link', { name: /https:\/\/github\.com\/example/ })
+      ).toHaveAttribute('href', 'https://github.com/example')
     })
   })
 })
