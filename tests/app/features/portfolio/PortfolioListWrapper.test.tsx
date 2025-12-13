@@ -5,17 +5,38 @@ import { createAppDataDTO } from '@/dal/dto'
 
 
 describe('ResumeListWrapper', () => {
+  const renderComponent = (options: { data?: any[] } = {}) => {
+    const defaultData = [createAppDataDTO()]
+
+    render(
+      <AppDataProvider
+        value={{
+          data: options.data || defaultData
+        }}
+      >
+        <PortfolioListWrapper />
+      </AppDataProvider>
+    )
+    
+    const assertLinkHref = (name: RegExp, href: string) => {
+      const link = screen.getByRole('link', { name })
+      expect(link).toHaveAttribute('href', href)
+    }
+
+    const assertImage = (name: RegExp, src: string) => {
+      const image = screen.getByRole('img', { name })
+      expect(image).toHaveAttribute('src', expect.stringContaining(src))
+    }
+    
+    return {
+      assertLinkHref,
+      assertImage
+    }
+  }
+  
   describe('Renders', () => {
     it('renders no items found', () => {
-      render(
-        <AppDataProvider
-          value={{
-            data: [createAppDataDTO()]
-          }}
-        >
-          <PortfolioListWrapper />
-        </AppDataProvider>
-      )
+      renderComponent();
 
       expect(screen.getByText(/found/)).toBeInTheDocument()
     })
@@ -24,14 +45,14 @@ describe('ResumeListWrapper', () => {
       const mockedData = createAppDataDTO({
         portfolio: [
           {
-            title: 'some title',
+            title: 'Some title',
             type: 'Web Development',
             img: 'image.jpg',
             organization: 'Org',
             location: 'Location',
             role: 'Developer',
-            description: 'Description',
-            website: 'https://example.com',
+            description: 'Some text',
+            website: 'https://mysite.com',
             source_code: 'https://github.com/example',
             techs: ['React', 'TypeScript'],
             order: 1
@@ -39,33 +60,20 @@ describe('ResumeListWrapper', () => {
         ]
       })
       
-      render(
-        <AppDataProvider
-          value={{
-            data: [mockedData]
-          }}
-        >
-          <PortfolioListWrapper />
-        </AppDataProvider>
-      )
+      const { assertLinkHref, assertImage } = renderComponent({ data: [mockedData] })
 
-      expect(screen.getByText(/title/)).toBeInTheDocument()
-      expect(screen.getByText(/Org/)).toBeInTheDocument()
-      expect(screen.getByText(/Developer/)).toBeInTheDocument()
-      expect(screen.getByText(/Web Development/)).toBeInTheDocument()
-      expect(screen.getByText(/Description/)).toBeInTheDocument()
-      expect(screen.getByText(/TypeScript/)).toBeInTheDocument()
-      expect(screen.getByText(/React/)).toBeInTheDocument()
-      expect(screen.getByRole('img', { name: /some title/i })).toHaveAttribute(
-        'src',
-        expect.stringContaining('image.jpg')
-      )
-      expect(
-        screen.getByRole('link', { name: /https:\/\/example\.com/ })
-      ).toHaveAttribute('href', 'https://example.com')
-      expect(
-        screen.getByRole('link', { name: /https:\/\/github\.com\/example/ })
-      ).toHaveAttribute('href', 'https://github.com/example')
+      expect(screen.getByText(/title/i)).toBeInTheDocument()
+      expect(screen.getByText(/Org/i)).toBeInTheDocument()
+      expect(screen.getByText(/Developer/i)).toBeInTheDocument()
+      expect(screen.getByText(/Web Development/i)).toBeInTheDocument()
+      expect(screen.getByText(/Some text/i)).toBeInTheDocument()
+      expect(screen.getByText(/TypeScript/i)).toBeInTheDocument()
+      expect(screen.getByText(/React/i)).toBeInTheDocument()
+      
+      assertImage(/some title/i, 'image.jpg')
+
+      assertLinkHref(/mysite/i, 'https://mysite.com')
+      assertLinkHref(/example/i, 'https://github.com/example')
     })
   })
 })

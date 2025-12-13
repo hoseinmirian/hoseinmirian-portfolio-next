@@ -28,19 +28,19 @@ export function PortfolioList({
           />
           <p className='text-orange-500'>{portfolioItem.organization}</p>
           <p className='text-gray-600 dark:text-gray-200'>
-            <b>type:</b> {portfolioItem.type}
+            <b>Type:</b> {portfolioItem.type}
           </p>
           <p className='text-gray-600 dark:text-gray-200'>
-            <b>location:</b> {portfolioItem.location}
+            <b>Location:</b> {portfolioItem.location}
           </p>
           <p className='text-gray-600 dark:text-gray-200'>
-            <b>role:</b> {portfolioItem.role}
+            <b>Role:</b> {portfolioItem.role}
           </p>
           <p className='text-gray-600 dark:text-gray-200'>
-            <b>description:</b> {portfolioItem.description}
+            <b>Description:</b> {portfolioItem.description}
           </p>
           <p className='text-gray-600 dark:text-gray-200'>
-            <b>website:</b>{' '}
+            <b>Website:</b>{' '}
             <a
               href={portfolioItem.website}
               target='_blank'
@@ -51,7 +51,7 @@ export function PortfolioList({
             </a>
           </p>
           <p className='text-gray-600 dark:text-gray-200'>
-            <b>github: </b>
+            <b>Github: </b>
             <a
               href={portfolioItem.source_code}
               target='_blank'
