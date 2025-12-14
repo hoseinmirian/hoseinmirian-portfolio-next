@@ -6,7 +6,11 @@ import Link from "next/link"
 import { Fragment } from 'react'
 import { SlashIcon } from "lucide-react"
 
-export default function BreadCrumbs({ className }: { className?: string }) {
+interface Props {
+  className?: string
+}
+
+export default function BreadCrumbs({ className }: Props) {
   const pathname = usePathname()
   const parts = pathname.split("/").filter(Boolean)
 

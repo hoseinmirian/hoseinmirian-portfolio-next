@@ -1,7 +1,11 @@
 import React from 'react'
 import { Flex } from '@/components/Layout'
 
-export default function Errors({ message }: { message: string }) {
+interface Props {
+  message: string
+}
+
+export default function Errors({ message }: Props) {
   return (
     <main>
       <Flex as='section' maxWidth='max-w-7xl' className='my-10'>

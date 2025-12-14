@@ -24,9 +24,9 @@ type GridPropsBase = {
   className?: string
 }
 
-export type GridProps = GridPropsBase & (WidthOnly | MaxWidthOnly)
+type GridProps = GridPropsBase & (WidthOnly | MaxWidthOnly)
 
-export function Grid({
+function Grid({
   as: Comp = 'div',
   children,
   cols = 1,
@@ -68,9 +68,9 @@ type FlexPropsBase = {
   className?: string
 }
 
-export type FlexProps = FlexPropsBase & (WidthOnly | MaxWidthOnly)
+type FlexProps = FlexPropsBase & (WidthOnly | MaxWidthOnly)
 
-export function Flex({
+function Flex({
   as: Comp = 'div',
   children,
   direction = 'flex-col',
@@ -97,3 +97,5 @@ export function Flex({
     </Comp>
   )
 }
+
+export { Grid, Flex }

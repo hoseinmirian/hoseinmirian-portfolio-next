@@ -1,14 +1,14 @@
 import { cn } from '@/lib'
 import type { ComponentProps, ReactNode } from 'react'
 
-type HeaderProps = ComponentProps<'header'> & {
+type Props = ComponentProps<'header'> & {
   children?: ReactNode
 }
 
-export default function Header({ className, children }: HeaderProps) {
+export default function Header({ className, children }: Props) {
   return (
     <header
-      role="banner"
+      role='banner'
       className={cn(
         'sticky top-0 z-50 w-full py-6 backdrop-blur-sm',
         className

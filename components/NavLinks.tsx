@@ -9,12 +9,12 @@ type LinkItem = {
   href: string
 }
 
-type NavLinkProps = {
+interface Props {
   className?: string
   navLinks: LinkItem[]
 }
 
-export default function NavLinks({ className, navLinks }: NavLinkProps) {
+export default function NavLinks({ className, navLinks }: Props) {
   const pathname = usePathname()
 
   return (

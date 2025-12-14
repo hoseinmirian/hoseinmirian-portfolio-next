@@ -7,7 +7,7 @@ interface Props {
   className?: string
 }
 
-export function ListItem({
+function ListItem({
   as: Component = 'li',
   children,
   onClick,
@@ -26,3 +26,5 @@ export function ListItem({
     </Component>
   )
 }
+
+export { ListItem }

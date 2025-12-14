@@ -40,7 +40,7 @@ export function PortfolioList({
             <b>Description:</b> {portfolioItem.description}
           </p>
           <p className='text-gray-600 dark:text-gray-200'>
-            <b>Website:</b>{' '}
+            <b>Website: </b>
             <a
               href={portfolioItem.website}
               target='_blank'
