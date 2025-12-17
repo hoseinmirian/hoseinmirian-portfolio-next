@@ -1,8 +1,7 @@
 import { render, screen } from '@/tests/test-utility'
 import { PortfolioListWrapper } from '@/features/portfolio/components'
 import { AppDataProvider } from '@/providers/AppDataProvider'
-import { createAppDataDTO } from '@/dal/dto'
-
+import { createAppDataDTO } from '@/dal/dto/appData-dto'
 
 describe('ResumeListWrapper', () => {
   const renderComponent = (options: { data?: any[] } = {}) => {

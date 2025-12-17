@@ -1,17 +1,19 @@
 'use client';
 
 import { useAppData } from '@/providers/AppDataProvider'
-import ResumeList from '@/features/resume/components/ResumeList'
-import type { ResumeType } from '@/db'
+import { Timeline } from '@/features/resume/components/TimeLine'
 
 export function ResumeListWrapper() {
   const { data } = useAppData();
   
-  if (!data.length) return null;
+  const { resume = [] } = data[0];
   
-  const { resume } = data[0];
-
-  return <ResumeList resumes={resume as ResumeType[]} />
+  const mappedTimeLineItems = resume.map(item => ({
+    ...item,
+    bulletPoints: item.bullet_points,
+  }))
+  
+  return <Timeline timelineItems={mappedTimeLineItems} className='ml-36' />
 }
 // should accept a prop to render all or some of the resume items (can be used in home page as well)
 

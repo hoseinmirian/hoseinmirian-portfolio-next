@@ -1,6 +1,7 @@
 import { render, screen } from '@/tests/test-utility'
 import { ResumeListWrapper } from '@/features/resume/components/ResumeListWrapper'
 import { AppDataProvider } from '@/providers/AppDataProvider'
+import { createAppDataDTO } from '@/dal/dto/appData-dto'
 
 // we could use either mocked hook or real-ish provider wrapper approach
 // here we demonstrate the provider wrapper approach
@@ -13,55 +14,67 @@ import { AppDataProvider } from '@/providers/AppDataProvider'
 
 
 describe('ResumeListWrapper', () => {
-  describe('Renders', () => {
-    it('renders nothing when no data', () => {
-      const { container } = render(
-        <AppDataProvider
-          value={{
-            data: [
-              {
-                id: '1',
-                resume: []
-              }
-            ]
-          }}
-        >
-          <ResumeListWrapper />
-        </AppDataProvider>
-      )
-      
-      expect(container).toBeEmptyDOMElement()
+  const renderComponent = (options: { data?: any[] } = {}) => {
+    const defaultData = [createAppDataDTO()]
+
+    render(
+      <AppDataProvider
+        value={{
+          data: options.data || defaultData
+        }}
+      >
+        <ResumeListWrapper />
+      </AppDataProvider>
+    )
+
+    const assertLinkHref = (name: RegExp, href: string) => {
+      const link = screen.getByRole('link', { name })
+      expect(link).toHaveAttribute('href', href)
+    }
+
+    return {
+      assertLinkHref,
+    }
+  }
+
+  describe('ResumeListWrapper', () => {
+    describe('Renders', () => {
+      it('renders no items found', () => {
+        renderComponent()
+
+        expect(screen.getByText(/found/)).toBeInTheDocument()
+      })
+
+      it('renders portfolio items', () => {
+        const mockedData = createAppDataDTO({
+          resume: [
+            {
+              organization: 'Org',
+              location: 'Location',
+              role: 'Developer',
+              from: '2020',
+              to: '2021',
+              bullet_points: ['text1', 'text2'],
+              website: 'https://mysite.com'
+            }
+          ]
+        })
+
+        const { assertLinkHref } = renderComponent({
+          data: [mockedData]
+        })
+
+        expect(screen.getByText(/Org/i)).toBeInTheDocument()
+        expect(screen.getByText(/Location/i)).toBeInTheDocument()
+        expect(screen.getByText(/Developer/i)).toBeInTheDocument()
+        expect(screen.getByText(/2020/i)).toBeInTheDocument()
+        expect(screen.getByText(/2021/i)).toBeInTheDocument()
+        expect(screen.getByText(/text1/i)).toBeInTheDocument()
+        expect(screen.getByText(/text2/i)).toBeInTheDocument()
+
+        assertLinkHref(/mysite/i, 'https://mysite.com')
+      })
     })
 
-    it('renders resume items', () => {
-      render(
-        <AppDataProvider
-          value={{
-            data: [
-              {
-                id: '1',
-                resume: [
-                  {
-                    organization: 'Oxford University',
-                    location: 'Oxford, UK',
-                    from: '2010-09-01',
-                    to: '2013-06-30',
-                    role: 'Bachelor of Science in Computer Science',
-                    website: 'https://www.ox.ac.uk',
-                    bullet_points: [
-                      'Graduated with honors, list for 6 semesters'
-                    ]
-                  }
-                ]
-              }
-            ]
-          }}
-        >
-          <ResumeListWrapper />
-        </AppDataProvider>
-      )
-
-      expect(screen.getByText(/Oxford University/)).toBeInTheDocument()
-    })
   })
 })

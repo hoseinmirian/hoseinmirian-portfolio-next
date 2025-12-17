@@ -44,7 +44,7 @@ export const AppDataZodSchema = z.object({
     from: z.string(),
     to: z.string(),
     role: z.string(),
-    website: z.url(),
+    website: z.string(),
     bullet_points: z.array(z.string()),
   })).optional(),
   education: z.array(z.object({

@@ -26,7 +26,9 @@ export function PortfolioList({
             width={600}
             alt={portfolioItem.title}
           />
-          <p className='text-orange-500'>{portfolioItem.organization}</p>
+          <p className='text-xl text-orange-500'>
+            {portfolioItem.organization}
+          </p>
           <p className='text-gray-600 dark:text-gray-200'>
             <b>Type:</b> {portfolioItem.type}
           </p>
