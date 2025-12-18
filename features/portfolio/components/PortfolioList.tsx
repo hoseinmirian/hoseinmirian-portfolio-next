@@ -18,7 +18,7 @@ export function PortfolioList({
     <ListRenderer items={visiblePortfolioItems} layout='grid' columns={2}>
       {(portfolioItem, idx) => (
         <ListItem key={portfolioItem.title + '_' + idx} className='space-y-1'>
-          <h3 className='text-lg font-semibold'>{portfolioItem.title}</h3>
+          <h2 className='text-lg font-semibold'>{portfolioItem.title}</h2>
           <Image
             className='mb-4'
             src={`/assets/images/${portfolioItem.img}`}
