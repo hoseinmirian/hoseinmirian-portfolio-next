@@ -10,7 +10,7 @@ export const AppDataZodSchema = z.object({
   about: z.object({
     name: z.string(),
     biography: z.string(),
-    cv_link: z.url(),
+    cv_link: z.string(),
     age: z.string(),
     full_summary: z.string(),
     address: z.string(),
