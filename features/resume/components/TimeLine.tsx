@@ -18,7 +18,7 @@ interface Props {
 }
 
 const Timeline = ({ timelineItems, className }: Props) => {
-  const baseClass = clsx('relative max-w-4xl', className)
+  const baseClass = clsx('relative max-w-7xl', className)
 
   if (timelineItems.length === 0) {
     return <p>No resume items found.</p>
