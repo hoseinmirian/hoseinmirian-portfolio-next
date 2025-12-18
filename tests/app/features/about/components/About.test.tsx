@@ -27,7 +27,6 @@ describe('About', () => {
     }
   }
 
-  describe('About', () => {
     describe('Renders', () => {
       it('renders about properties', () => {
         const mockedData = createAppDataDTO({
@@ -66,5 +65,4 @@ describe('About', () => {
         assertLinkHrefRegex(/download/i, 'pdf')
       })
     })
-  })
 })
