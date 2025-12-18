@@ -13,7 +13,7 @@ export function ResumeListWrapper() {
     bulletPoints: item.bullet_points,
   }))
   
-  return <Timeline timelineItems={mappedTimeLineItems} className='ml-36' />
+  return <Timeline timelineItems={mappedTimeLineItems} className='ml-10 sm:ml-36' />
 }
 // should. accept a prop to render all or some of the resume items (can be used in home page as well)
 

@@ -11,11 +11,10 @@ const MAIN_NAV_LINKS = [
 
 export default function Navigation() {
   return (
-    <nav role="navigation" className='mx-auto flex max-w-7xl items-center justify-between'>
-      <Link
-        className='text-2xl font-bold'
-        href='/'
-      >
+    <nav
+      role='navigation'
+      className='mx-auto flex max-w-7xl flex-col items-center justify-between md:flex-row'>
+      <Link className='text-2xl font-bold' href='/'>
         Hossein Mirian
       </Link>
       <NavLinks navLinks={MAIN_NAV_LINKS} />
