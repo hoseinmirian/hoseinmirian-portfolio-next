@@ -1,9 +1,9 @@
 import { render, screen } from '@/tests/test-utility'
-import { About } from '@/features/about/components/About'
+import { Skills } from '@/features/skills/components/Skills'
 import { AppDataProvider } from '@/providers/AppDataProvider'
 import { createAppDataDTO } from '@/dal/dto/appData-dto'
 
-describe('About', () => {
+describe('Skills', () => {
   const renderComponent = (options: { data?: any[] } = {}) => {
     const defaultData = [createAppDataDTO()]
 
@@ -13,56 +13,30 @@ describe('About', () => {
           data: options.data || defaultData
         }}
       >
-        <About />
+        <Skills />
       </AppDataProvider>
     )
-
-    const assertLinkHrefRegex = (name: RegExp, href: string) => {
-      const link = screen.getByRole('link', { name })
-      expect(link).toHaveAttribute('href', expect.stringContaining(href))
-    }
-
-    return {
-      assertLinkHrefRegex
-    }
   }
 
-    describe('Renders', () => {
-      it('renders about properties', () => {
-        const mockedData = createAppDataDTO({
-          about: {
-            name: "Hossein",
-            full_summary: "Full Summary",
-            biography: "Developer",
-            cv_link: "cv.pdf",
-            degree: 'Msc Computer Science',
-            years_experience: "10",
-            age: "38",
-            address:"17th Street",
-            email: "example@gmail.com",
-            phone: "+123456789",
-            nationality:"Persian",
-            remote_availability: "UK / Europe",
-          }
-        })
+  describe('Renders', () => {
+    it('renders no items found', () => {
+      renderComponent()
 
-        const { assertLinkHrefRegex } = renderComponent({
-          data: [mockedData]
-        })
-
-        expect(screen.getByText(/Hossein/i)).toBeInTheDocument()
-        expect(screen.getByText(/Summary/i)).toBeInTheDocument()
-        expect(screen.getByText(/Developer/i)).toBeInTheDocument()
-        expect(screen.getByText(/Computer/i)).toBeInTheDocument()
-        expect(screen.getByText(/10/i)).toBeInTheDocument()
-        expect(screen.getByText(/38/i)).toBeInTheDocument()
-        expect(screen.getByText(/Street/i)).toBeInTheDocument()
-        expect(screen.getByText(/example/i)).toBeInTheDocument()
-        expect(screen.getByText(/123/i)).toBeInTheDocument()
-        expect(screen.getByText(/Persian/i)).toBeInTheDocument()
-        expect(screen.getByText(/UK/i)).toBeInTheDocument()
-
-        assertLinkHrefRegex(/download/i, 'pdf')
-      })
+      expect(screen.getByText(/found/)).toBeInTheDocument()
     })
+    
+    it('renders skill items', () => {
+      const mockedData = createAppDataDTO({
+        skills: [
+          { title: 'React', level: 'Advanced' },
+          { title: 'TypeScript', level: 'Advanced' }
+        ]
+      })
+      
+      renderComponent({ data: [mockedData] })
+
+      expect(screen.getByText(/React/i)).toBeInTheDocument()
+      expect(screen.getByText(/TypeScript/i)).toBeInTheDocument()
+    })
+  })
 })
