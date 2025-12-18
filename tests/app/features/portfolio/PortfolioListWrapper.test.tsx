@@ -121,7 +121,7 @@ describe('ResumeListWrapper', () => {
       expect(screen.getAllByRole('listitem')).toHaveLength(expectedVisibleCount)
     })
 
-    it('shows "View All Projects" button when there are more items than visibleCount', () => {
+    it('renders "View All Projects" button when there are more items than visibleCount', () => {
       const mockedData = createAppDataDTO({
         portfolio: [
           {
@@ -161,7 +161,7 @@ describe('ResumeListWrapper', () => {
       assertLinkHref(/view all projects/i, '/portfolio')
     })
 
-    it('does not show "View All Projects" button when visibleCount is not less than length', () => {
+    it('does not render "View All Projects" button when visibleCount is not less than length', () => {
       const mockedData = createAppDataDTO({
         portfolio: [
           {
@@ -179,7 +179,7 @@ describe('ResumeListWrapper', () => {
           }
         ]
       })
-      
+
       renderComponent({
         data: [mockedData],
         props: { visibleCount: 1 }
