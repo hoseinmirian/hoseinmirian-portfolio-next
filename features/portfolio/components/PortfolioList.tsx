@@ -43,25 +43,29 @@ export function PortfolioList({
           </p>
           <p className='text-gray-600 dark:text-gray-200'>
             <b>Website: </b>
-            <a
-              href={portfolioItem.website}
-              target='_blank'
-              rel='noopener noreferrer'
-              className='text-blue-400 underline'
-            >
-              {portfolioItem.website}
-            </a>
+            {portfolioItem.website && (
+              <a
+                href={portfolioItem.website}
+                target='_blank'
+                rel='noopener noreferrer'
+                className='text-blue-400 underline'
+              >
+                {portfolioItem.website}
+              </a>
+            )}
           </p>
           <p className='text-gray-600 dark:text-gray-200'>
             <b>Github: </b>
-            <a
-              href={portfolioItem.source_code}
-              target='_blank'
-              rel='noopener noreferrer'
-              className='text-blue-400 underline'
-            >
-              {portfolioItem.source_code}
-            </a>
+            {portfolioItem.source_code && (
+              <a
+                href={portfolioItem.source_code}
+                target='_blank'
+                rel='noopener noreferrer'
+                className='text-blue-400 underline'
+              >
+                {portfolioItem.source_code}
+              </a>
+            )}
           </p>
           {portfolioItem.techs.map((tech, idx) => (
             <span

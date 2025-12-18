@@ -21,9 +21,9 @@ export function PortfolioListWrapper({ visibleCount }: props) {
     <>
       <PortfolioList portfolioItems={portfolio} visibleCount={visibleCount} />
       {visibleCount && portfolio.length > visibleCount && (
-        <Button variant='outline' className='mx-auto mt-6 flex'>
-          <Link href='/portfolio'>View All Projects</Link>
-        </Button>
+        <Link href='/portfolio' className='mx-auto mt-6 flex'>
+          <Button variant='outline' className='cursor-pointer p-5'>View All Projects</Button>
+        </Link>
       )}
     </>
   )
