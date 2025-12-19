@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     'hosein mirian'
   ],
   alternates: {
-    canonical: 'https://hoseinmirian.com/resume'
+    canonical: 'https://hoseinmirian.com/portfolio'
   },
   openGraph: {
     title: 'Portfolio | Hosein Mirian',
