@@ -69,7 +69,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
         <AppDataProvider value={value}>
           <Providers>
             <Header>{<Navigation />}</Header>
-            <BreadCrumbs className='divide-accent bg-background font-lora mx-auto mb-4 max-w-7xl border-b' />
+            <BreadCrumbs className='divide-accent bg-background font-lora mx-auto max-w-7xl border-b' />
             <main role="main">
               {children}
             </main>

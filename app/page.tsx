@@ -6,7 +6,7 @@ import { Skills } from '@/features/skills'
 
 export default function Home() {
   return (
-    <Flex as='section' maxWidth='max-w-7xl' className='my-10'>
+    <Flex as='section' maxWidth='max-w-7xl' className='my-6'>
       <h1 className='mb-4 text-3xl'>Home</h1>
       <About />
       <Separator className='my-8' />
