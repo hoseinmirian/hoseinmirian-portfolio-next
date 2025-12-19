@@ -20,7 +20,7 @@ export default function NavLinks({ className, navLinks }: Props) {
   return (
     <ul
       className={cn(
-        'text-muted-foreground flex flex-col items-center gap-4 text-lg font-light md:flex-row',
+        'text-muted-foreground flex text-sm md:text-lg items-center gap-1 md:gap-4 font-light',
         className
       )}
     >
