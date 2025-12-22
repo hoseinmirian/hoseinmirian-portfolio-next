@@ -12,6 +12,12 @@ const VERB = {
   GET: 'get'
 }
 
+//todo- move the db related like mongo error to DAL and simply here we should try catch error in action layer
+// type GetAllAppDataResult =
+//   | { success: true; data: AppDataSchema[]; error: null }
+//   | { success: false; data: null; error: unknown }
+
+
 export async function getAllAppData() {
   try {
     const appDatas = await appDataDAL.findAll()
