@@ -1,6 +1,6 @@
 'use client';
 /**
- * ✅ Generic ListRenderer (React 19 / Next 15)
+ * ✅ Generic ListRenderer (React 19 / Next 15) as example
  * --------------------------------------------
  * - Layout: grid or list (Tailwind-ready)
  * - Sorting + Pagination built in
