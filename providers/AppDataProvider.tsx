@@ -3,28 +3,25 @@
 import { createContext, useContext, type ReactNode } from 'react'
 import type { AppDataType } from '@/dal'
 
-export type AppData = {
+type AppDataContextType = {
   data: Array<AppDataType>
 }
 
 // 1️⃣ Create a context (filled data in layout in server side but used within client components) with a default value
-export const AppDataContext = createContext<AppData>({
+const AppDataContext = createContext<AppDataContextType>({
   data: []
 })
 
-type AppDataProviderProps = {
+interface props {
   children: ReactNode
-  value: AppData
+  value: AppDataContextType
 }
 
-const initialValue: AppData = {
+const context: AppDataContextType = {
   data: []
 }
 
-export const AppDataProvider = ({
-  children,
-  value = initialValue
-}: AppDataProviderProps) => {
+export const AppDataProvider = ({ children, value = context }: props) => {
   return (
     <AppDataContext.Provider value={value}>{children}</AppDataContext.Provider>
   )

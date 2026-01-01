@@ -10,7 +10,7 @@ export function About() {
   
   return (
     <section className='flex bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100'>
-      <div className='mx-auto grid w-full max-w-7xl grid-cols-1 gap-12 px-6 py-2 lg:grid-cols-2'>
+      <div className='mx-auto grid w-full max-w-7xl grid-cols-1 sm:grid-cols-2 gap-12 px-6 py-2 lg:grid-cols-2'>
         {/* LEFT – INTRO */}
         <div className='space-y-6'>
           <h2 className='text-4xl font-bold tracking-tight md:text-5xl'>

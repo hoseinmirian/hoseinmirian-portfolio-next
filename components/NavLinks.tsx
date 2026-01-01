@@ -30,10 +30,11 @@ export default function NavLinks({ className, navLinks }: Props) {
           <li
             key={href}
             className={cn(
-              'transition-color rounded-md px-3 py-1 duration-800',
-              isActive
-                ? 'bg-primary text-primary-foreground'
-                : 'text-muted-foreground hover:text-primary'
+              'transition-color text-muted-foreground hover:text-primary rounded-md px-3 py-1 duration-800',
+              {
+                'bg-primary text-primary-foreground hover:text-primary-foreground':
+                  isActive
+              }
             )}
           >
             <Link href={href}>{label}</Link>
