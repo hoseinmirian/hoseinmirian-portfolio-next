@@ -1,5 +1,5 @@
 import { render, screen } from '@/tests/test-utility'
-import { ResumeListWrapper } from '@/features/resume/components/ResumeListWrapper'
+import { ResumeListWrapper } from '@/features/resume/components'
 import { AppDataProvider } from '@/providers/AppDataProvider'
 import { createAppDataDTO } from '@/dal/dto/appData-dto'
 
@@ -37,7 +37,6 @@ describe('ResumeListWrapper', () => {
     }
   }
 
-  describe('ResumeListWrapper', () => {
     describe('Renders', () => {
       it('renders no items found', () => {
         renderComponent()
@@ -75,6 +74,4 @@ describe('ResumeListWrapper', () => {
         assertLinkHref(/mysite/i, 'https://mysite.com')
       })
     })
-
-  })
 })

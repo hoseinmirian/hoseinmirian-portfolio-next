@@ -3,7 +3,7 @@ import { PortfolioListWrapper } from '@/features/portfolio/components'
 import { AppDataProvider } from '@/providers/AppDataProvider'
 import { createAppDataDTO } from '@/dal/dto/appData-dto'
 
-describe('ResumeListWrapper', () => {
+describe('PortfolioListWrapper', () => {
   const renderComponent = (options: { data?: any[], props?: {} } = {}) => {
     const defaultData = [createAppDataDTO()]
 

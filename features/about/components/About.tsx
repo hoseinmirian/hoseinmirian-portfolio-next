@@ -1,16 +1,27 @@
-'use client';
-
-import { useAppData } from '@/providers/AppDataProvider'
+import { Container } from '@/components/Container'
 import { InfoCard } from './InfoCard'
 
-export function About() {
-  const { data } = useAppData();
-  
-  const { about } = data[0];
-  
+interface props {
+  about?: {
+    name: string
+    biography: string
+    cv_link: string
+    age: string
+    full_summary: string
+    address: string
+    email: string
+    phone: string
+    nationality: string
+    degree: string
+    remote_availability: string
+    years_experience: string
+  }
+}
+
+export function About({ about }: props) {
   return (
-    <section className='flex bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100'>
-      <div className='mx-auto grid w-full max-w-7xl grid-cols-1 sm:grid-cols-2 gap-12 px-6 py-2 lg:grid-cols-2'>
+        <Container className='grid grid-cols-1 sm:grid-cols-2 gap-12 py-2 px-6 lg:grid-cols-2'>
+
         {/* LEFT – INTRO */}
         <div className='space-y-6'>
           <h2 className='text-4xl font-bold tracking-tight md:text-5xl'>
@@ -56,7 +67,6 @@ export function About() {
             <p className='text-sm'>{about!.phone}</p>
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
   )
 }

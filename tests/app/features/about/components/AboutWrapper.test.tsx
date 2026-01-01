@@ -1,9 +1,9 @@
 import { render, screen } from '@/tests/test-utility'
-import { About } from '@/features/about/components/About'
+import { AboutWrapper } from '@/features/about/components'
 import { AppDataProvider } from '@/providers/AppDataProvider'
 import { createAppDataDTO } from '@/dal/dto/appData-dto'
 
-describe('About', () => {
+describe('AboutWrapper', () => {
   const renderComponent = (options: { data?: any[] } = {}) => {
     const defaultData = [createAppDataDTO()]
 
@@ -13,7 +13,7 @@ describe('About', () => {
           data: options.data || defaultData
         }}
       >
-        <About />
+        <AboutWrapper />
       </AppDataProvider>
     )
 
