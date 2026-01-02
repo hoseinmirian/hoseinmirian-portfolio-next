@@ -36,10 +36,9 @@ export default function Error({ error, reset }: ErrorPageProps) {
   }
 
   return (
-    <main className='font-josefin'>
-      <Flex as='section' maxWidth='max-w-7xl' className='my-10'>
+      <Flex as='section' maxWidth='max-w-7xl' className='my-10 font-josefin'>
         <div className='bg-muted-foreground/10 border-muted mb-4 rounded border-1 p-4'>
-          <h2 className='mb-2 text-2xl font-semibold'>Something went wrong</h2>
+          <h1 className='mb-2 text-2xl font-semibold'>Something went wrong</h1>
           <p className='text-muted-foreground mb-4'>
             An error occurred on {pathname}
           </p>
@@ -66,6 +65,5 @@ export default function Error({ error, reset }: ErrorPageProps) {
           </button>
         </div>
       </Flex>
-    </main>
   )
 }
