@@ -17,7 +17,7 @@ export default function Navigation() {
       <Link className='text-2xl font-bold' href='/'>
         Hossein Mirian
       </Link>
-      <NavLinks navLinks={MAIN_NAV_LINKS} />
+      <NavLinks navLinks={MAIN_NAV_LINKS} className='mb-2 md:mb-0' />
       <ThemeToggle />
     </nav>
   )

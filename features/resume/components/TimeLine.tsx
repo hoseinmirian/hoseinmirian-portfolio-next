@@ -38,7 +38,7 @@ const Timeline = ({ timelineItems, className }: Props) => {
           <div key={idx} className='pl-8 relative grid grid-cols-1'>
             <div className='bg-foreground absolute top-3.5 left-0 flex size-4 items-center justify-center rounded-full' />
 
-            <Card className='my-4 border-none shadow-none'>
+            <Card className='my-4 border-none break-all shadow-none'>
               <CardContent className='space-y-2 px-5'>
                 <p className='rounded-xl py-2 text-xl font-bold tracking-tight text-orange-500 xl:mb-4'>
                   {organization}
