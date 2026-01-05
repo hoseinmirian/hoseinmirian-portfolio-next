@@ -64,7 +64,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
   return (
     <html lang='en' suppressHydrationWarning>
       <body
-        className={`${josefin.variable} ${lora.variable} font-josefin relative min-h-dvh antialiased w-fit md:w-full mx-auto`}
+        className={`${josefin.variable} ${lora.variable} font-josefin relative min-h-dvh antialiased mx-auto`}
       >
         <AppDataProvider value={value}>
           <Providers>

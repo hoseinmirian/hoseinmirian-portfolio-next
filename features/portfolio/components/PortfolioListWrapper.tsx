@@ -5,24 +5,26 @@ import { Button } from '@/components/ui/button'
 import { PortfolioList } from './PortfolioList'
 import { useAppData } from '@/providers/AppDataProvider'
 
-interface props {
+interface Props {
   visibleCount?: number
 }
 
-export function PortfolioListWrapper({ visibleCount }: props) {
+export function PortfolioListWrapper({ visibleCount }: Props) {
   // - here we would normally fetch data from an API or use context/provider if this is marked as client component
   // - we can assemble different sets of integration feature like sorting, filtering, pagination etc.
 
   const { data } = useAppData()
-  
+
   const { portfolio = [] } = data[0]
-  
+
   return (
     <>
       <PortfolioList portfolioItems={portfolio} visibleCount={visibleCount} />
       {visibleCount && portfolio.length > visibleCount && (
         <Link href='/portfolio' className='mx-auto mt-6 flex'>
-          <Button variant='outline' className='cursor-pointer p-5'>View All Projects</Button>
+          <Button variant='outline' className='cursor-pointer p-5'>
+            View All Projects
+          </Button>
         </Link>
       )}
     </>
