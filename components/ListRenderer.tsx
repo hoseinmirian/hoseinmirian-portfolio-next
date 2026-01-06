@@ -1,5 +1,5 @@
 import React from 'react'
-import clsx from 'clsx'
+import { cn } from '@/lib'
 
 interface Props<T extends Record<string, unknown>> {
   items: T[]
@@ -22,7 +22,7 @@ function ListRenderer<T extends Record<string, unknown>>({
 }: Props<T>) {
   const baseClass =
     layout === 'grid'
-      ? clsx(
+      ? cn(
           'grid w-full',
           {
             'grid-cols-1': columns === 1,
@@ -38,7 +38,7 @@ function ListRenderer<T extends Record<string, unknown>>({
           gap,
           className
         )
-      : clsx('flex', 'flex-col', 'w-full', gap, className)
+      : cn('flex', 'flex-col', 'w-full', gap, className)
 
   if (items.length === 0) {
     return <div className='py-8 text-center'>{emptyState}</div>

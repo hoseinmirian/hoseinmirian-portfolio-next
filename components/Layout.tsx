@@ -1,4 +1,3 @@
-import clsx from 'clsx'
 import type { ReactNode, ElementType } from 'react'
 import type {
   Gap,
@@ -8,6 +7,7 @@ import type {
   FlexDirection,
   Width
 } from 'tailwindcss-types'
+import { cn } from '@/lib'
 
 // ------------------ DISCRIMINATED UNIONS ------------------
 type WidthOnly = { width: Width; maxWidth?: never }
@@ -43,7 +43,7 @@ function Grid({
 
   return (
     <Comp
-      className={clsx(
+      className={cn(
         'grid',
         colClasses,
         gap,
@@ -83,7 +83,7 @@ function Flex({
 }: FlexProps) {
   return (
     <Comp
-      className={clsx(
+      className={cn(
         'flex',
         direction,
         justify,

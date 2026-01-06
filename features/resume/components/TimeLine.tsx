@@ -1,6 +1,6 @@
 import { Card, CardContent } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
-import clsx from 'clsx'
+import { cn } from '@/lib'
 
 type TimeLineItem = {
   organization: string
@@ -18,7 +18,7 @@ interface Props {
 }
 
 const Timeline = ({ timelineItems, className }: Props) => {
-  const baseClass = clsx('relative max-w-7xl', className)
+  const baseClass = cn('relative max-w-7xl', className)
 
   if (timelineItems.length === 0) {
     return <p>No resume items found.</p>

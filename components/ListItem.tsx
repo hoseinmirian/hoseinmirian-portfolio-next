@@ -1,4 +1,4 @@
-import clsx from 'clsx'
+import { cn } from '@/lib'
 
 interface Props {
   as?: React.ElementType
@@ -15,7 +15,7 @@ function ListItem({
   ...rest
 }: Props) {
   
-  const baseClass = clsx(
+  const baseClass = cn(
     'rounded-lg border border-gray-200 bg-white p-4 shadow-sm transition hover:shadow-md dark:border-gray-700 dark:bg-gray-800 dark:hover:shadow-lg',
     className
   ) 

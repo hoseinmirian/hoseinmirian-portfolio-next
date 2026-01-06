@@ -6,7 +6,7 @@ export default function ContactWrapper() {
   return (
     <>
       <ContactForm action={createContact} />
-      <ContactSocials />
+      <ContactSocials className='my-6' />
     </>
   )
   

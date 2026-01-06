@@ -9,7 +9,7 @@
  */
 
 import React from 'react';
-import clsx from 'clsx';
+import { cn } from '@/lib'
 
 export interface ListRendererProps<T extends Record<string, unknown>> {
   items: T[];
@@ -69,7 +69,7 @@ export function ListRenderer<T extends Record<string, unknown>>({
 
   const baseClass =
     layout === 'grid'
-      ? clsx(
+      ? cn(
         'grid',
         {
           'grid-cols-1': columns === 1,
@@ -82,7 +82,7 @@ export function ListRenderer<T extends Record<string, unknown>>({
         gap,
         className
       )
-      : clsx('flex', 'flex-col', gap, className);
+      : cn('flex', 'flex-col', gap, className);
 
   return (
     <div>

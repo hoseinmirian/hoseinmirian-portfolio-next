@@ -1,5 +1,5 @@
 import React from 'react'
-import clsx from 'clsx'
+import { cn } from '@/lib'
 
 interface props {
   children: React.ReactNode
@@ -16,7 +16,7 @@ export function Container({
 }: props) {
   return (
     <Component
-      className={clsx(
+      className={cn(
         // base behavior: full width, center content
         'mx-auto w-full',
         // optional max width to constrain content
