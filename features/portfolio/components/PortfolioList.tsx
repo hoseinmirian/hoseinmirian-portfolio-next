@@ -14,7 +14,7 @@ export function PortfolioList({
 }: Props) {
   const visiblePortfolioItems = portfolioItems.slice(0, visibleCount)
 
-  const EAGER_LOAD_THRESHOLD = 2
+  const EAGER_LOAD_THRESHOLD = 15
 
   return (
     <ListRenderer items={visiblePortfolioItems} layout='grid' columns={2}>
@@ -26,8 +26,12 @@ export function PortfolioList({
             src={`/assets/images/${portfolioItem.img}`}
             height={400}
             width={600}
-            loading={idx < EAGER_LOAD_THRESHOLD ? 'eager' : 'lazy'}
-            fetchPriority={idx < EAGER_LOAD_THRESHOLD ? 'high' : 'low'}
+            loading={
+              portfolioItem.order < EAGER_LOAD_THRESHOLD ? 'eager' : 'lazy'
+            }
+            fetchPriority={
+              portfolioItem.order < EAGER_LOAD_THRESHOLD ? 'high' : 'auto'
+            }
             alt={portfolioItem.title}
           />
           <p className='text-xl text-orange-500'>
