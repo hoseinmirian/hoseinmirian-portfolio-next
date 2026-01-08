@@ -55,8 +55,9 @@ function ListRenderer<T extends Record<string, unknown>>({
    🧪 USAGE EXAMPLES
 ------------------------------------------------------------------- */
 
-type User = { id: number; name: string; age: number }
+// type User = { id: number; name: string; age: number }
 
+/*
 function ExampleList() {
   const users: User[] = [
     { id: 1, name: 'Charlie', age: 25 },
@@ -81,5 +82,6 @@ function ExampleList() {
     </ListRenderer>
   )
 }
+*/
 
 export { ListRenderer }

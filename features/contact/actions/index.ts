@@ -7,8 +7,8 @@ export async function createContact(
   },
   formData: FormData
 ) {
-    const email = formData.get('email')
-    const content = formData.get('content')
+    // const email = formData.get('email')
+    // const content = formData.get('content')
   
   // 1 zod validation can be done here
   let errors: string[] = []

@@ -21,7 +21,8 @@
     "lint:fix": "eslint --fix",
     "clean:storybook": "rm -rf node_modules/.cache/storybook",
     "storybook": "npm run clean:storybook && storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "ts": "tsc --noEmit"
   },
   "dependencies": {
     "@date-fns/utc": "2.1.1",
