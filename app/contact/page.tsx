@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function Contact() {
   return (
       <Flex as='section' maxWidth='max-w-7xl' className='my-6'>
-        <h1 className='text-3xl'>Contact</h1>
+        <h1 className='text-3xl mb-4'>Contact</h1>
         <ContactWrapper/>
       </Flex>
   )
