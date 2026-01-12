@@ -3,17 +3,21 @@
 import { useAppData } from '@/providers/AppDataProvider'
 import { CheckCircle } from 'lucide-react'
 
-export function Skills() {
-  const { data } = useAppData();
-  
-  const { skills = [] } = data[0];
-  
+interface Props {
+  dataCy?: string
+}
+
+export function Skills({ dataCy = 'skills' }: Props) {
+  const { data } = useAppData()
+
+  const { skills = [] } = data[0]
+
   if (skills.length === 0) {
-    return <p>No skills found.</p>; 
+    return <p>No skills found.</p>
   }
-  
+
   return (
-    <section className='mx-auto max-w-7xl'>
+    <section className='mx-auto max-w-7xl' data-cy={dataCy}>
       <ul className='grid grid-cols-2 gap-3 sm:grid-cols-4 md:grid-cols-6'>
         {skills.map(({ title }, idx) => (
           <li

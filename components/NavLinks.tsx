@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation'
 type LinkItem = {
   label: string
   href: string
+  dataCy?: string
 }
 
 interface Props {
@@ -24,7 +25,7 @@ export default function NavLinks({ className, navLinks }: Props) {
         className
       )}
     >
-      {navLinks.map(({ href, label }) => {
+      {navLinks.map(({ href, label, dataCy }) => {
         const isActive = pathname === href
         return (
           <li
@@ -37,7 +38,12 @@ export default function NavLinks({ className, navLinks }: Props) {
               }
             )}
           >
-            <Link href={href}>{label}</Link>
+            <Link
+              href={href}
+              data-cy={dataCy || `main-nav-${label.toLowerCase()}`}
+            >
+              {label}
+            </Link>
           </li>
         )
       })}
