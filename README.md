@@ -1,41 +1,114 @@
-Test Coverage:
+# 🚀 Hossein Mirian Portfolio 
 
+<div align="center">
+
+[![CI - Test, Coverage & E2E](https://github.com/hoseinmirian/hoseinmirian-portfolio-next/actions/workflows/ci-test.yml/badge.svg)](https://github.com/hoseinmirian/hoseinmirian-portfolio-next/actions)
 [![codecov](https://codecov.io/gh/hoseinmirian/hoseinmirian-portfolio-next/graph/badge.svg?token=BWMZ8H8BE0)](https://codecov.io/gh/hoseinmirian/hoseinmirian-portfolio-next)
+[![Next.js 16](https://img.shields.io/badge/Next.js-16-black?logo=next.js)](https://nextjs.org/)
+[![React 19](https://img.shields.io/badge/React-19-blue?logo=react)](https://react.dev/)
+[![TypeScript 5.9](https://img.shields.io/badge/TypeScript-5.9-blue?logo=typescript)](https://www.typescriptlang.org/)
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+**A high-performance, production-ready portfolio built with a Clean Architecture mindset.**
+*Showcasing modern full-stack patterns, strict type safety, and automated quality assurance.*
 
-## Getting Started
+</div>
 
-First, run the development server:
+---
 
+## 🛠️ Tech Stack & Features
+
+### 🧠 Core Engine
+* **Next.js 16 (App Router):** Leveraging Server Components, Suspense, and Streaming for optimal performance.
+* **React 19:** Utilizing the latest React features and the new **React Compiler** (Babel plugin).
+* **TypeScript 5.9:** Strict typing across the entire boundary (API, UI, and Testing).
+* **Zod:** Runtime schema validation for API responses and form data.
+
+### 🧱 Architecture & Pattern
+* **Data Access Layer (DAL):** Decoupled business logic from the UI using a dedicated layer for data fetching and mutations, ensuring maintainability.
+* **🤖 AI-Assisted Development:** Built with a "human-in-the-loop" AI workflow (Claude) to optimize complex logic and boilerplate.
+* **🎨 UI System:** Crafted with **Tailwind CSS 4.1**, **shadcn/ui**, and **Lucide React** icons. Fully accessible (A11y) and themeable.
+
+### ✅ Quality Assurance (Test-First Mindset)
+* **🧪 Unit/Integration:** **Vitest** with JSDOM and `@testing-library/react`.
+* **🎭 E2E Testing:** **Cypress** covering critical user journeys on preview branches via dynamic CI/CD.
+* **📖 Storybook 10:** Component-driven development with isolated UI testing and accessibility audits.
+* **🛠️ MSW (Mock Service Worker):** Seamless API mocking for both development and testing.
+
+---
+
+## 📊 Technical Overview
+
+| Category | Tools |
+| :--- | :--- |
+| **Framework** | Next.js 16 (App Router), React 19, TypeScript 5.9 |
+| **Styling** | Tailwind CSS 4.1, shadcn/ui, Lucide Icons |
+| **Validation** | Zod (Schema Validation), React Hook Form |
+| **Testing** | Vitest, Cypress, MSW (Mock Service Worker), Codecov |
+| **Backend** | Mongoose (MongoDB), Data Access Layer (DAL) |
+| **Tooling** | Storybook 10, ESLint, Prettier, Bundle Analyzer |
+| **Insights** | Vercel Analytics, Speed Insights |
+
+---
+
+## 💻 Essential Commands
+
+### 🏗️ Setup & Development
+Start the local development server with pre-dev linting.
 ```bash
+# Install dependencies
+npm install
+
+# Start development server (runs 'npm run lint' first)
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Open Storybook UI components documentation
+npm run storybook
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🧪 Testing Suite
+Comprehensive testing from unit to end-to-end.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Run all unit tests with Vitest
+npm run test
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Run Vitest with interactive UI dashboard
+npm run test:ui
 
-## Learn More
+# Generate test coverage report
+npm run coverage
 
-To learn more about Next.js, take a look at the following resources:
+# Run E2E tests (Cypress) against local production build
+npm run e2e:run
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+🚀 Production & Analysis
+Build and verify the production bundle.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+# Build for production (includes linting check)
+npm run build
 
-## Deploy on Vercel
+# Start production server
+npm run start
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Analyze bundle size for performance optimization
+npm run analyze
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
->>>>>>> ea351fa (init)
+🧹 Quality & Formatting
+Keep the codebase clean and strictly typed.
+
+```bash
+# Run ESLint check & TypeScript type-check
+npm run lint
+npm run ts
+
+# Automatically fix linting/formatting issues
+npm run lint:fix
+```
+
+👨‍💻 Author
+Hossein Mirian Full-Stack Engineer | Clean Architecture Advocate | Node.js 22
+
+<div align="center"> Built with ❤️ using Next.js 16 </div>
