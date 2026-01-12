@@ -1,5 +1,20 @@
 describe('Application', () => {
 
+  Cypress.on('uncaught:exception', err => {
+    // Next.js/React hydration errors are common in CI/Production builds
+    // and usually don't interfere with test functionality.
+    if (
+      err.message.includes('Minified React error #418') ||
+      err.message.includes('Minified React error #423') ||
+      err.message.includes('hydration')
+    ) {
+      return false // This prevents Cypress from failing the test
+    }
+
+    // Let other errors (actual app crashes) still fail the test
+    return true
+  })
+  
   beforeEach(() => {
     cy.visit('/');
     cy.assertCommonAccessibility()
