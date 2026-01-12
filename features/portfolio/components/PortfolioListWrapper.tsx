@@ -6,10 +6,11 @@ import { PortfolioList } from './PortfolioList'
 import { useAppData } from '@/providers/AppDataProvider'
 
 interface Props {
-  visibleCount?: number
+  visibleCount?: number,
+  dataCy?: string
 }
 
-export function PortfolioListWrapper({ visibleCount }: Props) {
+export function PortfolioListWrapper({ visibleCount, dataCy = 'portfolio-list-wrapper' }: Props) {
   // - here we would normally fetch data from an API or use context/provider if this is marked as client component
   // - we can assemble different sets of integration feature like sorting, filtering, pagination etc.
 
@@ -18,7 +19,7 @@ export function PortfolioListWrapper({ visibleCount }: Props) {
   const { portfolio = [] } = data[0]
 
   return (
-    <>
+    <div data-cy={dataCy}>
       <PortfolioList portfolioItems={portfolio} visibleCount={visibleCount} />
       {visibleCount && portfolio.length > visibleCount && (
         <Link href='/portfolio' className='mx-auto mt-6 flex'>
@@ -27,6 +28,6 @@ export function PortfolioListWrapper({ visibleCount }: Props) {
           </Button>
         </Link>
       )}
-    </>
+    </div>
   )
 }

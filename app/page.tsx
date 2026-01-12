@@ -3,6 +3,34 @@ import { AboutWrapper } from '@/features/about'
 import { PortfolioListWrapper } from '@/features/portfolio'
 import { Separator } from '@/components/ui/separator'
 import { Skills } from '@/features/skills'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Home Page',
+  description:
+    'Professional resume of Hossein Mirian, senior software engineer specializing in TypeScript, React, Vue, and Node.js.',
+  keywords: [
+    'hossein mirian',
+    'resume',
+    'cv',
+    'software engineer',
+    'typeScript',
+    'react',
+    'vue',
+    'node.js'
+  ],
+  openGraph: {
+    title: 'Home Page | Hossein Mirian',
+    description:
+      'Professional portfolio website of Hossein Mirian, senior software engineer specializing in TypeScript, React, and Node.js.',
+    url: 'https://hoseinmirian.com/',
+    siteName: 'Hosein Mirian Portfolio',
+    type: 'profile'
+  },
+  alternates: {
+    canonical: 'https://hoseinmirian.com/resume'
+  }
+}
 
 export default function Home() {
   return (

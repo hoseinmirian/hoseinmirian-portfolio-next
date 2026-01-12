@@ -3,8 +3,32 @@ import type { Metadata } from 'next'
 import ContactWrapper from '@/features/contact/components/ContactWrapper'
 
 export const metadata: Metadata = {
-  title: 'Contact'
+  title: 'Contact',
+  description:
+    'Contact Hossein Mirian for inquiries, collaborations, or professional opportunities in software engineering.',
+  keywords: [
+    'hossein mirian',
+    'contact',
+    'cv',
+    'software engineer',
+    'typeScript',
+    'react',
+    'vue',
+    'node.js'
+  ],
+  openGraph: {
+    title: 'Contact | Hossein Mirian',
+    description:
+      'Professional portfolio of Hossein Mirian, senior software engineer specializing in TypeScript, React, and Node.js.',
+    url: 'https://hoseinmirian.com/resume',
+    siteName: 'Hosein Mirian Portfolio',
+    type: 'profile'
+  },
+  alternates: {
+    canonical: 'https://hoseinmirian.com/contact'
+  }
 }
+
 
 export default function Contact() {
   return (
