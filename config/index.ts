@@ -1,7 +1,6 @@
 const config = {
   environments: process.env.NODE_ENV ?? 'development',
   port: process.env.PORT ?? 8000,
-  cypressBaseUrl: process.env.CYPRESS_BASE_URL ?? 'http://localhost:3000',
   databaseURI: process.env.DATABASE_URI,
   databaseName: process.env.DATABASE_NAME,
   databaseConnectionOptions: {

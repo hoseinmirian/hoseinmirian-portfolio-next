@@ -1,11 +1,10 @@
 import { defineConfig } from 'cypress'
-import config from '@/config'
 
 export default defineConfig({
   e2e: {
-    baseUrl: config.cypressBaseUrl,
+    baseUrl: process.env.E2E_BASE_URL || undefined,
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      return config
     }
-  },
+  }
 })
