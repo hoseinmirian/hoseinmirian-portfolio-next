@@ -66,4 +66,4 @@ jobs:
       - name: 🧪 Run Cypress E2E on preview
         env:
           CYPRESS_BASE_URL: ${{ needs.test.outputs.preview_url }}
-        run: npm run e2e:preview
+        run: npx cypress run --e2e
