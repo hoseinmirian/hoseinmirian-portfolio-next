@@ -3,7 +3,11 @@
 import { useAppData } from '@/providers/AppDataProvider'
 import { Timeline } from '@/features/resume/components/TimeLine'
 
-export function ResumeListWrapper() {
+interface Props {
+  dataCy?: string
+}
+
+export function ResumeListWrapper({dataCy = 'resume-list-wrapper' }: Props) {
   const { data } = useAppData();
   
   const { resume = [] } = data[0];
@@ -13,7 +17,11 @@ export function ResumeListWrapper() {
     bulletPoints: item.bullet_points,
   }))
   
-  return <Timeline timelineItems={mappedTimeLineItems} className='ml-10' />
+  return (
+    <div data-cy={dataCy}>
+      <Timeline timelineItems={mappedTimeLineItems} className='ml-10' />
+    </div>
+  )
 }
 // should. accept a prop to render all or some of the resume items (can be used in home page as well)
 

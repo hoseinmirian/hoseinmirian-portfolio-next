@@ -61,9 +61,6 @@ jobs:
       - name: 📦 Install dependencies
         run: npm ci
 
-      - name: 🔍 Debug baseUrl
-        run: echo "CYPRESS_BASE_URL=${{ needs.test.outputs.preview_url }}"
-
       - name: 🧪 Run Cypress E2E on preview
         env:
           CYPRESS_BASE_URL: ${{ needs.test.outputs.preview_url }}

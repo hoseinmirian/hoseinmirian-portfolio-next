@@ -25,7 +25,7 @@ const Timeline = ({ timelineItems, className }: Props) => {
   }
 
   return (
-    <div className={baseClass}>
+    <div className={baseClass} data-cy='timeline-list'>
       <Separator
         orientation='vertical'
         className='bg-muted absolute top-4 left-2'
@@ -35,7 +35,11 @@ const Timeline = ({ timelineItems, className }: Props) => {
           { organization, to, from, location, role, website, bulletPoints },
           idx
         ) => (
-          <div key={idx} className='pl-8 relative grid grid-cols-1'>
+          <div
+            key={idx}
+            className='relative grid grid-cols-1 pl-8'
+            data-cy='timeline-item'
+          >
             <div className='bg-foreground absolute top-3.5 left-0 flex size-4 items-center justify-center rounded-full' />
 
             <Card className='my-4 border-none break-all shadow-none'>
