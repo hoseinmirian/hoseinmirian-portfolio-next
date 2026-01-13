@@ -6,7 +6,7 @@ interface Props {
   dataCy?: string
 }
 
-export default function ContactWrapper({ dataCy = 'contact-wrapper' }: Props) {
+export function ContactWrapper({ dataCy = 'contact-wrapper' }: Props) {
   return (
     <div data-cy={dataCy} className='w-full'>
       <ContactForm action={createContact} />
