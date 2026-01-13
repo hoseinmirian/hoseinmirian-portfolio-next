@@ -13,9 +13,11 @@ export default function Navigation() {
   return (
     <nav
       role='navigation'
-      className='mx-auto flex max-w-7xl flex-col items-center justify-between md:flex-row'>
+      className='mx-auto flex max-w-7xl flex-col items-center justify-between md:flex-row'
+    >
       <Link className='text-2xl font-bold' href='/'>
-        Hossein Mirian
+        <span className='text-black-500 dark:text-white'>Hossein</span>{' '}
+        <span className='text-orange-500 dark:text-yellow-400'>Mirian</span>
       </Link>
       <NavLinks navLinks={MAIN_NAV_LINKS} className='mb-2 md:mb-0' />
       <ThemeToggle />

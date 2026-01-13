@@ -12,7 +12,7 @@ function ListItem({
   children,
   onClick,
   className,
-  ...rest
+  ...prop
 }: Props) {
   
   const baseClass = cn(
@@ -21,7 +21,7 @@ function ListItem({
   ) 
 
   return (
-    <Component className={baseClass} onClick={onClick} {...rest}>
+    <Component className={baseClass} onClick={onClick} {...prop}>
       {children}
     </Component>
   )

@@ -20,6 +20,7 @@ export default function ContactForm({ action }: Props) {
 
   return (
     <form
+      data-cy='contact-form'
       action={formAction}
       className='mx-auto md:max-w-lg space-y-6 rounded-lg border border-gray-200 bg-white p-6 shadow-sm max-w-fit md:w-350 dark:border-gray-800 dark:bg-gray-900'
     >

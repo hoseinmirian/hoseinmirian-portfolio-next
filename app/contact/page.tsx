@@ -1,6 +1,6 @@
 import { Flex } from '@/components/Layout'
 import type { Metadata } from 'next'
-import ContactWrapper from '@/features/contact/components/ContactWrapper'
+import { ContactWrapper } from '@/features/contact'
 
 export const metadata: Metadata = {
   title: 'Contact',

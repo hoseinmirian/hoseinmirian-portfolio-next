@@ -22,8 +22,12 @@ export function PortfolioListWrapper({ visibleCount, dataCy = 'portfolio-list-wr
     <div data-cy={dataCy}>
       <PortfolioList portfolioItems={portfolio} visibleCount={visibleCount} />
       {visibleCount && portfolio.length > visibleCount && (
-        <Link href='/portfolio' className='mx-auto mt-6 flex'>
-          <Button variant='outline' className='cursor-pointer p-5'>
+        <Link href='/portfolio'>
+          <Button
+            variant='outline'
+            className='p-5  mx-auto mt-6 flex cursor-pointer'
+            data-cy='view-all-projects-button'
+          >
             View All Projects
           </Button>
         </Link>

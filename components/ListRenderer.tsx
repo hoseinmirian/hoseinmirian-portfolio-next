@@ -18,7 +18,8 @@ function ListRenderer<T extends Record<string, unknown>>({
   columns = 3,
   className,
   children,
-  emptyState = <p className='text-gray-500'>No items found.</p>
+  emptyState = <p className='text-gray-500'>No items found.</p>,
+  ...prop
 }: Props<T>) {
   const baseClass =
     layout === 'grid'
@@ -45,7 +46,7 @@ function ListRenderer<T extends Record<string, unknown>>({
   }
 
   return (
-    <ul className={baseClass}>
+    <ul className={baseClass} {...prop}>
       {items.map((item, idx) => children(item, idx))}
     </ul>
   )

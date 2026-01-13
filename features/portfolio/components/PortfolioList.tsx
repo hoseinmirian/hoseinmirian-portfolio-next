@@ -17,9 +17,13 @@ export function PortfolioList({
   const EAGER_LOAD_THRESHOLD = 15
 
   return (
-    <ListRenderer items={visiblePortfolioItems} layout='grid' columns={2}>
+    <ListRenderer items={visiblePortfolioItems} layout='grid' columns={2} data-cy='portfolio-list'>
       {(portfolioItem, idx) => (
-        <ListItem key={portfolioItem.title + '_' + idx} className='space-y-1'>
+        <ListItem
+          key={portfolioItem.title + '_' + idx}
+          className='space-y-1'
+          data-cy='portfolio-item'
+        >
           <h2 className='text-lg font-semibold'>{portfolioItem.title}</h2>
           <Image
             className='mb-4'
