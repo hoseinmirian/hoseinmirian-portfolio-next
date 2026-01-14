@@ -17,7 +17,12 @@ export function PortfolioList({
   const EAGER_LOAD_THRESHOLD = 15
 
   return (
-    <ListRenderer items={visiblePortfolioItems} layout='grid' columns={2} data-cy='portfolio-list'>
+    <ListRenderer
+      items={visiblePortfolioItems}
+      layout='grid'
+      columns={2}
+      data-cy='portfolio-list'
+    >
       {(portfolioItem, idx) => (
         <ListItem
           key={portfolioItem.title + '_' + idx}
@@ -38,7 +43,7 @@ export function PortfolioList({
             }
             alt={portfolioItem.title}
           />
-          <p className='text-xl text-orange-500'>
+          <p className='text-xl text-orange-500 dark:text-yellow-400'>
             {portfolioItem.organization}
           </p>
           <p className='text-gray-600 dark:text-gray-200'>
