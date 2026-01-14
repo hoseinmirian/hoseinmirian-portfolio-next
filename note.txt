@@ -1,0 +1,3 @@
+- before running e2e test the app should be started with "npm run build & npm start" command
+- server components like page are tested only with cypress e2e tests
+- unit tests are only for client components and integration, other non-react code like utils, services, etc

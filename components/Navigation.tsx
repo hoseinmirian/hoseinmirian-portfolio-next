@@ -17,7 +17,7 @@ export default function Navigation() {
     >
       <Link className='text-2xl font-bold' href='/'>
         <span className='text-black-500 dark:text-white'>Hossein</span>{' '}
-        <span className='text-orange-500 dark:text-yellow-400'>Mirian</span>
+        <span className='text-orange-700 dark:text-yellow-300'>Mirian</span>
       </Link>
       <NavLinks navLinks={MAIN_NAV_LINKS} className='mb-2 md:mb-0' />
       <ThemeToggle />

@@ -43,7 +43,7 @@ export function PortfolioList({
             }
             alt={portfolioItem.title}
           />
-          <p className='text-xl text-orange-500 dark:text-yellow-400'>
+          <p className='text-xl text-orange-700 dark:text-yellow-300'>
             {portfolioItem.organization}
           </p>
           <p className='text-gray-600 dark:text-gray-200'>
