@@ -1,4 +1,4 @@
-# CLAUDE.md
+# AGENTS.md
 
 ## Referenced Agent Skills
 
@@ -21,7 +21,7 @@ skills/react-best-practices.md
 
 ## React Best Practices (MANDATORY)
 
-Follow **Vercel React Best Practices** strictly.
+Follow **Vercel React Best Practices**
 
 ### Rendering & Performance
 - Do NOT use `useMemo` or `useCallback` unless:
