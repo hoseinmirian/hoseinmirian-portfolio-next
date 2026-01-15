@@ -1,4 +1,4 @@
-# CLAUDE.md
+# AGENTS.md
 
 ## Referenced Agent Skills
 
@@ -87,9 +87,9 @@ The codebase follows a strict separation of concerns with the following layers:
 6. **Features Layer** (`features/` directory)
    - Organized by feature (e.g., `portfolio/`, `resume/`, `contact/`)
    - Each feature contains:
-     - `components/` - Feature-specific React components
-     - `hooks/` - Custom React hooks (if needed)
-     - `actions/` - Feature-specific server actions (if needed)
+      - `components/` - Feature-specific React components
+      - `hooks/` - Custom React hooks (if needed)
+      - `actions/` - Feature-specific server actions (if needed)
 
 7. **Components Layer** (`components/` directory)
    - Shared/reusable React components
