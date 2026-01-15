@@ -24,9 +24,13 @@ export default defineConfig({
         'app/manifest.ts',
         'node_modules/',
         '**/index.ts',
-        '**/*.d.ts'
+        '**/*.d.ts',
+        // ✅ NEW — exclude sentry example & global error
+        'app/sentry-example-page/page.tsx',
+        'app/api/sentry-example-api/route.ts',
+        'app/global-error.tsx'
       ]
     },
-    reporters: ['default', 'html'],
+    reporters: ['default', 'html']
   }
 })
