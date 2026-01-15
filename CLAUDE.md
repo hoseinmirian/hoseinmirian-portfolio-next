@@ -19,6 +19,130 @@ and why the change is necessary.
 When generating React code, apply the rules in:
 skills/react-best-practices.md
 
+## React Best Practices (MANDATORY)
+
+Follow **Vercel React Best Practices** strictly.
+
+### Rendering & Performance
+- Do NOT use `useMemo` or `useCallback` unless:
+   - There is a proven performance issue
+   - OR the component is demonstrably re-rendering too often
+- Prefer derived values over state
+- Avoid unnecessary re-renders
+- Avoid inline object / function props only when it actually matters
+
+---
+
+### State Management
+- Prefer local state first
+- Lift state only when truly shared
+- Avoid global state unless unavoidable
+- Context must be:
+   - Split by concern
+   - Memoized
+   - Small and focused
+
+🚫 Never create a “god context”
+
+---
+
+### Effects (`useEffect`)
+- `useEffect` is ONLY for:
+   - External systems
+   - Subscriptions
+   - Imperative APIs
+- Do NOT use `useEffect` for:
+   - Derived state
+   - Data transformation
+   - Syncing props to state
+
+Every effect must answer:
+> “What external system am I syncing with?”
+
+---
+
+### Data Fetching
+- Fetch data at the highest reasonable level
+- Avoid fetches in deeply nested components
+- Avoid waterfalls
+- Prefer parallel fetching
+- Components should mostly *consume* data, not fetch it
+
+---
+
+## Component Design Rules
+
+- Components do ONE thing
+- Prefer composition over configuration
+- Avoid boolean prop explosions (`isAdmin`, `isEditable`, `isCompact`)
+- Files over ~300 lines must be split
+- JSX should remain readable (no logic-heavy JSX)
+
+---
+
+## Hooks Rules
+
+- Custom hooks:
+   - Must start with `use`
+   - Must NOT return JSX
+   - Must encapsulate real logic
+- Do NOT create hooks that simply wrap another hook with no added value
+
+---
+
+## Error Handling
+- Prefer explicit error states
+- Do NOT swallow errors
+- Error boundaries only for UI crashes
+
+---
+
+## Testing Philosophy (IMPORTANT)
+
+- Test behavior, not implementation
+- Test what the user sees and does
+- Prefer:
+   - `getByRole`
+   - `getByText`
+- try to use `within` to scope the component being tested
+- Avoid:
+   - Snapshot tests (unless layout is stable)
+   - Testing internal state
+   - Mocking React internals
+
+---
+
+## TypeScript Rules
+- Avoid `any`
+- Prefer explicit return types for exported functions
+- Use discriminated unions for complex states
+- Narrow types early
+
+---
+
+## Code Style
+- Prefer named exports
+- Early returns over nested conditionals
+- Delete code when possible
+- Avoid clever one-liners
+
+---
+
+## What the Agent SHOULD Do
+- Suggest the simplest working solution
+- Call out anti-patterns explicitly
+- Explain *why* something is wrong
+- Prefer removing code over adding code
+
+---
+
+## What the Agent MUST NOT Do
+- Do NOT add memoization “just in case”
+- Do NOT invent APIs or libraries
+- Do NOT refactor unrelated code
+- Do NOT introduce global state unnecessarily
+
+
 ## Project Overview
 
 This is a portfolio website for Hossein Mirian built with Next.js 15 (App Router), TypeScript, and MongoDB. The project uses Turbopack, Vitest for testing, Storybook for component development, and includes advanced features like React Compiler and MSW for mocking.
@@ -87,9 +211,9 @@ The codebase follows a strict separation of concerns with the following layers:
 6. **Features Layer** (`features/` directory)
    - Organized by feature (e.g., `portfolio/`, `resume/`, `contact/`)
    - Each feature contains:
-     - `components/` - Feature-specific React components
-     - `hooks/` - Custom React hooks (if needed)
-     - `actions/` - Feature-specific server actions (if needed)
+      - `components/` - Feature-specific React components
+      - `hooks/` - Custom React hooks (if needed)
+      - `actions/` - Feature-specific server actions (if needed)
 
 7. **Components Layer** (`components/` directory)
    - Shared/reusable React components
