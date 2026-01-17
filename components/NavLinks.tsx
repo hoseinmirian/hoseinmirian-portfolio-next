@@ -39,6 +39,7 @@ export default function NavLinks({ className, navLinks }: Props) {
             )}
           >
             <Link
+              scroll={false}
               href={href}
               data-cy={dataCy || `main-nav-${label.toLowerCase()}`}
             >
