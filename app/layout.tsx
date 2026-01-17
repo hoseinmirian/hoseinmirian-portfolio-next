@@ -9,6 +9,7 @@ import Navigation from '@/components/Navigation'
 import { AppDataProvider } from '@/providers/AppDataProvider'
 import { getAllAppData } from '@/actions'
 import './globals.css'
+import ClientLayout from '@/components/ClientLayout'
 
 const josefin = Josefin_Sans({
   variable: '--font-josefin',
@@ -64,18 +65,21 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
   return (
     <html lang='en' suppressHydrationWarning>
       <body
-        className={`${josefin.variable} ${lora.variable} font-josefin relative min-h-dvh antialiased mx-auto`}
+        className={`${josefin.variable} ${lora.variable} font-josefin relative mx-auto min-h-dvh antialiased`}
       >
         <AppDataProvider value={value}>
           <Providers>
-            <Header>{<Navigation />}</Header>
-            <BreadCrumbs className='divide-accent bg-background font-lora mx-auto max-w-7xl border-b' />
-            <main role="main">
-              {children}
-            </main>
-            <footer role="contentinfo" className="py-6 text-center text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Hossein Mirian
-            </footer>
+            <ClientLayout>
+              <Header>{<Navigation />}</Header>
+              <BreadCrumbs className='divide-accent bg-background font-lora mx-auto max-w-7xl border-b' />
+              <main role='main'>{children}</main>
+              <footer
+                role='contentinfo'
+                className='text-muted-foreground py-6 text-center text-sm'
+              >
+                © {new Date().getFullYear()} Hossein Mirian
+              </footer>
+            </ClientLayout>
           </Providers>
         </AppDataProvider>
         <SpeedInsights />
