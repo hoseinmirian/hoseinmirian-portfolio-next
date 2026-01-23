@@ -3,6 +3,14 @@
 ## Referenced Agent Skills
 
 - vercel-react-best-practices
+- web-design-guidelines
+- front-end-testing
+- functional
+- mutation-testing
+- react-testing
+- tdd
+- testing
+- typescript-strict
 
 ## General Guidelines
 
