@@ -69,8 +69,10 @@ describe('Application', () => {
       cy.getByData('portfolio-list-wrapper').within(() => {
         cy.getByData('portfolio-list')
           .find('[data-cy="portfolio-item"]')
-          .each(($item) => {
-            cy.wrap($item)
+          .each((_, index) => {
+            cy.getByData('portfolio-list')
+              .find('[data-cy="portfolio-item"]')
+              .eq(index)
               .find('img')
               .should('be.visible')
               .and('have.attr', 'src')
