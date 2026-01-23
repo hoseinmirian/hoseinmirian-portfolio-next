@@ -113,7 +113,7 @@ describe('Application', () => {
     })
 
     it('should show portfolio items', () => {
-      cy.getByData('portfolio-list-wrapper').within(() => {
+      cy.getByData('portfolio-page-list-wrapper').within(() => {
         cy.getByData('portfolio-list')
           .find('[data-cy="portfolio-item"]')
           .should('exist')
@@ -122,7 +122,7 @@ describe('Application', () => {
     })
 
     it('should render an image for each portfolio item', () => {
-      cy.getByData('portfolio-list-wrapper').within(() => {
+      cy.getByData('portfolio-page-list-wrapper').within(() => {
         cy.getByData('portfolio-list')
           .find('[data-cy="portfolio-item"]')
           .each((_, index) => {
